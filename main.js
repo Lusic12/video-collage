@@ -219,6 +219,11 @@ function toThumbPath(path) {
   return path.replace(/\.(png|jpe?g)$/i, ".thumb.webp");
 }
 
+function toViewPath(path) {
+  if (!path || !shouldUseThumb(path)) return path;
+  return path.replace(/\.(png|jpe?g)$/i, ".view.webp");
+}
+
 function renderVideoEmbed(video) {
   const title = escapeHtml(video?.title || "Source video");
   const embed = buildYouTubeEmbedUrl(video?.youtube, video?.segment);
@@ -373,8 +378,16 @@ function setupLightbox() {
   document.body.addEventListener("click", (e) => {
     const target = e.target;
     if (target.tagName === "IMG" && target.dataset.zoom) {
-      lbImg.src = target.dataset.zoom;
+      lbImg.dataset.fallback = target.dataset.zoom;
+      lbImg.src = toViewPath(target.dataset.zoom);
       lb.hidden = false;
+    }
+  });
+
+  lbImg.addEventListener("error", () => {
+    const fallback = lbImg.dataset.fallback;
+    if (fallback && lbImg.src !== fallback) {
+      lbImg.src = fallback;
     }
   });
 
