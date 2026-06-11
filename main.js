@@ -2,7 +2,13 @@
 // Project Page — dynamic showcase, lightbox, scroll-reveal
 // ════════════════════════════════════════════════════════════════
 
-const TEASER_DRIVE_ID = "1CPJlqXsJ7f2c3dvMR1xy4j9eiNKNZuRY";
+const TEASER_VIDEO = {
+  youtube: "https://www.youtube.com/watch?v=yebNIHKAC4A",
+  segment: "02:50 - 03:02",
+  fallback: "https://drive.google.com/file/d/1CPJlqXsJ7f2c3dvMR1xy4j9eiNKNZuRY/view",
+  poster: "assets/Golden/keyframes/frame_000125.jpg",
+  title: "Golden teaser clip"
+};
 const TEASER_KEYFRAMES = [
   "assets/Golden/keyframes/frame_000045.jpg",
   "assets/Golden/keyframes/frame_000105.jpg",
@@ -27,8 +33,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 // ── Teaser ──────────────────────────────────────────────────────
 function setupTeaser() {
-  const iframe = document.getElementById("teaser-iframe");
-  if (iframe) iframe.src = `https://drive.google.com/file/d/${TEASER_DRIVE_ID}/preview`;
+  const container = document.getElementById("teaser-video");
+  if (!container) return;
+  container.innerHTML = renderVideoEmbed(TEASER_VIDEO);
 }
 
 // ── Teaser Keyframes (Fallback grid) ───────────────────────────
@@ -141,7 +148,13 @@ function renderFilmCard(f) {
         <div class="input-block">
           <div class="sub-label">Source video</div>
           <div class="input-video">
-            <iframe src="${f.drive_preview}" allow="autoplay" allowfullscreen></iframe>
+            ${renderVideoEmbed({
+              youtube: f.youtube,
+              segment: f.segment,
+              fallback: f.drive_view,
+              poster: shownKfs[0] || f.mask,
+              title: `${niceName(f)} source video`
+            })}
           </div>
         </div>
 
@@ -181,6 +194,91 @@ function renderFilmCard(f) {
     </div>
   `;
   return card;
+}
+
+function renderVideoEmbed(video) {
+  const title = escapeHtml(video?.title || "Source video");
+  const embed = buildYouTubeEmbedUrl(video?.youtube, video?.segment);
+  if (embed) {
+    return `
+      <iframe
+        src="${embed}"
+        title="${title}"
+        loading="lazy"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+    `;
+  }
+
+  const poster = escapeHtml(video?.poster || "");
+  const fallback = escapeHtml(video?.fallback || "#");
+  return `
+    <div class="video-fallback">
+      ${poster ? `<img src="${poster}" alt="${title}" loading="lazy">` : ""}
+      <div class="video-fallback-overlay">
+        <span class="video-fallback-label">Preview unavailable</span>
+        <a class="video-fallback-link" href="${fallback}" target="_blank" rel="noreferrer">Open source</a>
+      </div>
+    </div>
+  `;
+}
+
+function buildYouTubeEmbedUrl(url, segment) {
+  const videoId = extractYouTubeId(url);
+  if (!videoId) return null;
+
+  const range = parseSegmentRange(segment);
+  const params = new URLSearchParams({
+    rel: "0",
+    modestbranding: "1",
+    playsinline: "1"
+  });
+  if (range?.start != null) params.set("start", String(range.start));
+  if (range?.end != null && range.end > range.start) params.set("end", String(range.end));
+
+  return `https://www.youtube-nocookie.com/embed/${videoId}?${params.toString()}`;
+}
+
+function extractYouTubeId(url) {
+  if (!url) return null;
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname.includes("youtu.be")) {
+      return parsed.pathname.replace(/^\/+/, "").split("/")[0] || null;
+    }
+    if (parsed.searchParams.get("v")) return parsed.searchParams.get("v");
+    const parts = parsed.pathname.split("/").filter(Boolean);
+    const embedIdx = parts.indexOf("embed");
+    if (embedIdx >= 0 && parts[embedIdx + 1]) return parts[embedIdx + 1];
+  } catch (_) {
+    return null;
+  }
+  return null;
+}
+
+function parseSegmentRange(segment) {
+  if (!segment) return null;
+  const cleaned = String(segment)
+    .replace(/\s*đến\s*/gi, " - ")
+    .replace(/[–—]/g, "-")
+    .trim();
+  const parts = cleaned.split(/\s*-\s*/);
+  if (parts.length !== 2) return null;
+  const start = parseTimeToSeconds(parts[0]);
+  const end = parseTimeToSeconds(parts[1]);
+  if (start == null || end == null) return null;
+  return { start, end };
+}
+
+function parseTimeToSeconds(value) {
+  const text = String(value).trim();
+  if (!text || /full video/i.test(text)) return null;
+  const nums = text.split(":").map((part) => Number(part.trim()));
+  if (nums.some((n) => Number.isNaN(n))) return null;
+  if (nums.length === 2) return nums[0] * 60 + nums[1];
+  if (nums.length === 3) return nums[0] * 3600 + nums[1] * 60 + nums[2];
+  return null;
 }
 
 // ── Scroll reveal (IntersectionObserver) ────────────────────────

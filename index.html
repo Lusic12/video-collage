@@ -4,10 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description"
-    content="Narrative-Aware Video-to-Collage Generation for Stylized Animation Summarization — a narrative-aware pipeline that turns a raw animation video into a single shape-constrained collage via MAPPS-guided RL keyframe selection and event-aware Voronoi layout.">
+    content="Narrative-aware video-to-collage generation (Na-V2C) transforms a raw video into a single structured collage summary through scene-aware keyframe selection, MAPPS-guided reinforcement learning, and event-aware shape-constrained layout generation.">
   <meta name="keywords"
     content="Video Summarization, Animation, Anime, Collage, Layout Generation, Reinforcement Learning, CLIP-IQA, Voronoi">
-  <title>Narrative-Aware Video-to-Collage Generation</title>
+  <title>Narrative-aware video-to-collage generation (Na-V2C)</title>
 
   <!-- Fonts used by style.css -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,8 +25,8 @@
   <div class="container">
     <span class="venue-badge">TVCG · Under Review 2026</span>
     <h1 class="hero-title">
-      Narrative-Aware Video-to-Collage Generation
-      <span class="hero-subtitle">for Stylized Animation Summarization</span>
+      Narrative-aware video-to-collage generation (Na-V2C)
+      <span class="hero-subtitle">A single structured collage summary from raw video</span>
     </h1>
 
     <p class="authors">
@@ -61,12 +61,11 @@
     <span class="section-eyebrow">TL;DR</span>
     <h2 class="section-title">One video in, one shape-aware collage out.</h2>
     <div class="abstract reveal">
-      We reframe video summarization as <strong>constructing a single structured collage</strong> from a raw
-      video. Instead of "summarize first, arrange later", we optimize keyframe selection
-      <strong>for the final collage</strong>: a PPO agent picks frames using anime-specific aesthetics
-      (<strong>MAPPS</strong>, a multi-prompt CLIP-IQA module), foreground <em>event supports</em> are extracted,
-      and a <strong>shape-constrained Voronoi layout</strong> arranges them inside an arbitrary target silhouette
-      while preserving chronological readability.
+      Na-V2C formulates video summarization as <strong>constructing a single structured collage summary</strong>.
+      Instead of selecting keyframes and arranging them independently, it defines frame utility by contribution to the
+      <strong>final composed collage</strong>: scene-aware segmentation, <strong>MAPPS</strong>-guided PPO selection,
+      foreground <em>event-support</em> extraction, and <strong>shape-constrained event-aware layout</strong> are
+      coupled to preserve narrative progression, visual expressiveness, and spatial coherence.
     </div>
   </div>
 </section>
@@ -78,14 +77,14 @@
   <div class="container">
     <div class="flagship-figure reveal">
       <p class="flagship-caption">
-        <strong>Figure 1.</strong> Given an input animation video (e.g., <em>"Golden" — KPop Demon Hunters</em>)
-        and a target silhouette, our method generates a shape-constrained collage that preserves storyline
-        progression while respecting geometric constraints.
+        <strong>Teaser.</strong> Given an input video clip and a target silhouette, Na-V2C selects narratively
+        informative and visually decisive keyframes, converts them into foreground event supports, and composes a
+        chronology-preserving collage inside the target shape.
       </p>
       <div class="flagship-pipeline">
         <div class="pipe-stage">
           <span class="pipe-label">Input Video</span>
-          <div class="pipe-video"><iframe id="teaser-iframe" allow="autoplay" allowfullscreen></iframe></div>
+          <div class="pipe-video" id="teaser-video"></div>
         </div>
         <div class="pipe-arrow"></div>
         <div class="pipe-stage">
@@ -116,26 +115,22 @@
     <h2 class="section-title">Abstract</h2>
     <div class="abstract reveal">
       <p style="margin-bottom:14px;">
-        Classical video summarization returns isolated keyframes or short skims, which preserve semantic coverage
-        but rarely provide a single holistic view of a narrative. We introduce a new problem setting,
-        <strong>narrative-aware collage generation from raw video</strong>, in which the entire pipeline is designed
-        around the quality of the <em>final</em> collage summary rather than around isolated frame importance. This is
-        especially challenging for animation, where narrative salience depends not only on event boundaries but also on
-        visual impact, compositional clarity, and expressive character depiction.
+        Classical video summarization usually outputs isolated keyframes or short skims. These preserve semantic
+        coverage, but they rarely provide a single holistic visual artifact that communicates the narrative at a glance.
+        Na-V2C introduces <strong>narrative-aware video-to-collage generation</strong>, where the pipeline is organized
+        around the quality of the <em>final</em> collage summary rather than isolated frame importance.
       </p>
       <p style="margin-bottom:14px;">
-        Our key idea is to formulate keyframe construction as a <strong>collage-oriented sequential decision process</strong>.
-        We segment a video into coherent scenes with TransNet&nbsp;V2, augment each frame with anime-specific aesthetic
-        attributes from <strong>MAPPS</strong> (Multi-Attribute Prompted Preference Scoring, a multi-prompt CLIP-IQA module),
-        and train a dual-head policy with <strong>Proximal Policy Optimization</strong> under a decomposed reward over
-        representativeness, temporal diversity, and perceptual quality.
+        The framework first segments the video into coherent scenes with TransNet&nbsp;V2. Each frame is represented by
+        semantic features together with anime-specific aesthetic attributes from <strong>MAPPS</strong>
+        (Multi-Attribute Prompted Preference Scoring), and a dual-head policy trained with
+        <strong>Proximal Policy Optimization</strong> balances representativeness, temporal diversity, and perceptual quality.
       </p>
       <p>
         Selected frames are converted into compact <em>foreground event supports</em> and arranged within an arbitrary
-        target silhouette by a <strong>shape-constrained, event-aware Voronoi layout</strong> that preserves chronological
-        readability and foreground integrity. Across metric-based, ground-truth-free, and human evaluation, the proposed
-        formulation produces more interpretable and visually expressive summaries than both modular cascades and direct
-        multimodal-LLM generation.
+        target silhouette by a <strong>shape-constrained, event-aware layout</strong> that preserves chronological
+        readability and foreground integrity. The result is a compact visual summary that communicates what happened,
+        in what order, and through which defining visual moments.
       </p>
     </div>
   </div>
@@ -256,7 +251,7 @@
 <section class="section" id="comparison">
   <div class="container">
     <span class="section-eyebrow">Comparison</span>
-    <h2 class="section-title">Shape-constrained collage vs. prior collage engines</h2>
+    <h2 class="section-title">Quantitative results aligned with the paper</h2>
     <p class="lead lead-wide">
       Under identical inputs and the same target silhouette, our event-aware layout preserves foreground
       characters and narrative readability, whereas baselines more often fragment salient regions or produce
@@ -291,18 +286,18 @@
     <h3 class="subsection-title">Keyframe selection (vs. DR-DSN, LLMVS)</h3>
     <div class="metrics-wrap reveal">
       <table class="metrics">
-        <caption>Keyframe selection results (mean). ↑ higher is better, ↓ lower is better. Best in bold.</caption>
+        <caption>Keyframe selection results (mean ± std). ↑ higher is better, ↓ lower is better. Best in bold.</caption>
         <thead>
           <tr><th>Metric</th><th>Ours</th><th>DR-DSN</th><th>LLMVS</th></tr>
         </thead>
         <tbody>
-          <tr class="ours"><td>RecErr ↓</td><td class="best">0.0569</td><td>0.0607</td><td>0.0607</td></tr>
-          <tr class="ours"><td>Fréchet Dist. ↓</td><td class="best">0.1242</td><td>0.1473</td><td>0.1388</td></tr>
-          <tr class="ours"><td>MPR ↑</td><td class="best">0.8199</td><td>0.5038</td><td>0.5160</td></tr>
-          <tr class="ours"><td>Top10 ↑</td><td class="best">0.6600</td><td>0.1667</td><td>0.1233</td></tr>
-          <tr class="ours"><td>Temporal Coverage ↑</td><td class="best">2.7389</td><td>1.8416</td><td>2.3687</td></tr>
-          <tr class="ours"><td>DistGap ↓</td><td class="best">0.1335</td><td>0.1454</td><td>0.1478</td></tr>
-          <tr class="ours"><td>LPIPS Gap ↓</td><td class="best">0.3140</td><td>0.3402</td><td>0.3284</td></tr>
+          <tr class="ours"><td>RecErr ↓</td><td class="best">0.0569 ± 0.0416</td><td>0.0607 ± 0.0488</td><td>0.0607 ± 0.0290</td></tr>
+          <tr class="ours"><td>Fréchet Dist. ↓</td><td class="best">0.1242 ± 0.0865</td><td>0.1473 ± 0.1145</td><td>0.1388 ± 0.0675</td></tr>
+          <tr class="ours"><td>MPR ↑</td><td class="best">0.8199 ± 0.1065</td><td>0.5038 ± 0.2148</td><td>0.5160 ± 0.1932</td></tr>
+          <tr class="ours"><td>Top10 ↑</td><td class="best">0.6600 ± 0.3815</td><td>0.1667 ± 0.3265</td><td>0.1233 ± 0.2530</td></tr>
+          <tr class="ours"><td>Temporal Coverage ↑</td><td class="best">2.7389 ± 2.7904</td><td>1.8416 ± 3.1879</td><td>2.3687 ± 4.1835</td></tr>
+          <tr class="ours"><td>DistGap ↓</td><td class="best">0.1335 ± 0.0748</td><td>0.1454 ± 0.0909</td><td>0.1478 ± 0.0629</td></tr>
+          <tr class="ours"><td>LPIPS Gap ↓</td><td class="best">0.3140 ± 0.1617</td><td>0.3402 ± 0.2054</td><td>0.3284 ± 0.1556</td></tr>
         </tbody>
       </table>
     </div>
@@ -333,26 +328,24 @@
     </p>
 
     <!-- EQ3: end-to-end pipeline -->
-    <h3 class="subsection-title">End-to-end pipeline (vs. modular cascade &amp; GPT chatbot)</h3>
+    <h3 class="subsection-title">End-to-end visual quality</h3>
     <div class="metrics-wrap reveal">
       <table class="metrics">
-        <caption>End-to-end video-to-collage evaluation on 50 held-out anime clips. MLLM-as-judge scores are 1–10. Best in bold.</caption>
+        <caption>End-to-end no-reference visual-quality comparison on the final video-collage outputs. Best in bold.</caption>
         <thead>
           <tr>
-            <th>Pipeline</th><th>BRISQUE ↓</th><th>MANIQA ↑</th><th>ArtiMuse ↑</th>
-            <th>CLIPScore ↑</th><th>Aest. ↑</th><th>Narr. ↑</th><th>Coh. ↑</th>
+            <th>Method</th><th>BRISQUE ↓</th><th>TOPIQ-NR ↑</th><th>Q-Align ↑</th>
           </tr>
         </thead>
         <tbody>
-          <tr><td>GPT chatbot</td><td>38.4</td><td>0.412</td><td>56.7</td><td>0.231</td><td>6.4</td><td>5.9</td><td>6.1</td></tr>
-          <tr><td>LLMVS + Colla</td><td>31.7</td><td>0.471</td><td>60.2</td><td>0.258</td><td>7.1</td><td>6.7</td><td>6.8</td></tr>
-          <tr class="ours"><td>Ours</td><td class="best">27.5</td><td class="best">0.518</td><td class="best">63.9</td><td class="best">0.279</td><td class="best">7.9</td><td class="best">7.6</td><td class="best">7.7</td></tr>
+          <tr><td>Na-V2C Selector + Colla</td><td>59.6830</td><td class="best">0.6614</td><td>3.1321</td></tr>
+          <tr class="ours"><td>Na-V2C</td><td class="best">54.4719</td><td>0.6331</td><td class="best">3.1958</td></tr>
         </tbody>
       </table>
     </div>
     <p class="metric-caption">
-      The same ordering — Ours &gt; LLMVS+Colla &gt; GPT chatbot — emerges under every heterogeneous evaluator, with the
-      largest gains on narrative coverage and layout coherence.
+      Using the same selector and keyframe budget, the proposed layout improves BRISQUE and Q-Align Aesthetic over the
+      Colla-based variant, while TOPIQ-NR slightly favors the Colla rendering.
     </p>
   </div>
 </section>
@@ -414,50 +407,37 @@
 <section class="section" id="user-study">
   <div class="container">
     <span class="section-eyebrow">User Study</span>
-    <h2 class="section-title">Humans prefer our collages</h2>
+    <h2 class="section-title">User-study protocol reported in the paper</h2>
     <p class="lead lead-wide">
-      A within-subjects study (N&nbsp;=&nbsp;36, Friedman + Bonferroni-corrected Wilcoxon) compared four pipelines.
-      <strong>Ours</strong> was rated significantly higher on both video-collage and MPEG-7 layout scoring, and was the
-      forced-choice favourite by a wide margin.
+      The current manuscript reports the <strong>questionnaire design and evaluation tasks</strong> rather than a
+      condensed leaderboard figure. The study separates end-to-end video-collage judgment from controlled
+      MPEG-7 layout judgment.
     </p>
 
     <div class="user-study-figure reveal">
       <p class="study-caption">
-        <strong>Forced-choice preference (%).</strong> Left group: preferred video collage (Q2). Right group: preferred
-        MPEG-7 layout (Q4). Higher is better.
+        <strong>Two questionnaire formats.</strong> One evaluates full video-to-collage summaries from source clips;
+        the other isolates shape-preservation quality under controlled target masks.
       </p>
-      <div class="chart-container">
-        <div class="chart-y-axis"><span>70%</span><span>52%</span><span>35%</span><span>17%</span><span>0%</span></div>
-        <div class="chart-bars">
-          <div class="chart-group">
-            <div class="bar-group">
-              <div class="bar bar-base" style="height:9.7%"><span class="bar-val">6.8</span></div>
-              <div class="bar bar-base" style="height:17.1%"><span class="bar-val">12.0</span></div>
-              <div class="bar bar-base" style="height:27.7%"><span class="bar-val">19.4</span></div>
-              <div class="bar" style="height:88.3%"><span class="bar-val">61.8</span></div>
-            </div>
-            <div class="bar-label">Q2 · Preferred video collage</div>
-          </div>
-          <div class="chart-group">
-            <div class="bar-group">
-              <div class="bar bar-base" style="height:11.9%"><span class="bar-val">8.3</span></div>
-              <div class="bar bar-base" style="height:21.1%"><span class="bar-val">14.8</span></div>
-              <div class="bar bar-base" style="height:31.7%"><span class="bar-val">22.2</span></div>
-              <div class="bar" style="height:78.1%"><span class="bar-val">54.7</span></div>
-            </div>
-            <div class="bar-label">Q4 · Preferred MPEG-7 layout</div>
-          </div>
-        </div>
-      </div>
-      <div class="chart-legend">
-        <span class="legend-item"><span class="legend-color legend-sc"></span>GPT chatbot</span>
-        <span class="legend-item"><span class="legend-color legend-colla"></span>SC + Mask</span>
-        <span class="legend-item"><span class="legend-color legend-iscp"></span>LLMVS + Colla</span>
-        <span class="legend-item"><span class="legend-color legend-ours"></span>Ours</span>
+      <div class="abstract reveal" style="margin-top:18px; text-align:left;">
+        <p style="margin-bottom:14px;">
+          <strong>Format 1: video-based evaluation.</strong> Across 9 clips, participants watch the source clip, rate
+          event coverage of the selected keyframes (Q1), choose a preferred collage among randomized A/B/C/D outputs
+          (Q2), and score each option from 1 to 5 as a visual summary (Q3).
+        </p>
+        <p style="margin-bottom:14px;">
+          <strong>Format 2: MPEG-7 layout evaluation.</strong> Across 3 target masks, participants inspect a target
+          silhouette with four collage outputs, choose the layout that best preserves the target shape (Q4), and score
+          each option from 1 to 5 (Q5).
+        </p>
+        <p>
+          In both formats, output order is randomized per case and displayed collage sizes are matched to reduce
+          position and scale bias.
+        </p>
       </div>
       <p class="metric-caption">
-        Likert scores (1–5) follow the same pattern — Ours: Q3&nbsp;4.6&nbsp;±&nbsp;0.5, Q5&nbsp;4.5&nbsp;±&nbsp;0.6 — with
-        large Cliff's δ effect sizes against every baseline, stable across visually-trained and general raters.
+        The paper-side summary table reports 27 question blocks for the video-based study and 6 question blocks for the
+        MPEG-7 layout study.
       </p>
     </div>
   </div>
@@ -490,7 +470,7 @@
     <h2 class="section-title">BibTeX</h2>
     <pre class="bibtex">@article{le2026narrative,
   author  = {Le, Thien-Doanh and Quach, Hai-Dang and Phan, Anh-Minh and Le, Thi-Ngoc-Hanh},
-  title   = {Narrative-Aware Video-to-Collage Generation for Stylized Animation Summarization},
+  title   = {Narrative-aware video-to-collage generation (Na-V2C)},
   journal = {Under Review},
   year    = {2026},
 }</pre>
