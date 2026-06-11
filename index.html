@@ -77,31 +77,14 @@
   <div class="container">
     <div class="flagship-figure reveal">
       <p class="flagship-caption">
-        <strong>Teaser.</strong> Given an input video clip and a target silhouette, Na-V2C selects narratively
-        informative and visually decisive keyframes, converts them into foreground event supports, and composes a
-        chronology-preserving collage inside the target shape.
+        <strong>Teaser.</strong> Overview figure from the paper. Na-V2C couples narrative-aware keyframe selection,
+        foreground event extraction, and shape-constrained collage composition into a single video-to-collage pipeline.
       </p>
-      <div class="flagship-pipeline">
-        <div class="pipe-stage">
-          <span class="pipe-label">Input Video</span>
-          <div class="pipe-video" id="teaser-video"></div>
-        </div>
-        <div class="pipe-arrow"></div>
-        <div class="pipe-stage">
-          <span class="pipe-label">Selected Keyframes</span>
-          <div class="pipe-grid" id="teaser-keyframes"></div>
-        </div>
-        <div class="pipe-arrow"></div>
-        <div class="pipe-stage pipe-stage-sm">
-          <span class="pipe-label">Target Silhouette</span>
-          <img src="assets/Golden/mask.png" alt="Target silhouette" data-zoom="assets/Golden/mask.png">
-        </div>
-        <div class="pipe-arrow"></div>
-        <div class="pipe-stage pipe-stage-lg">
-          <span class="pipe-label">Output Collage</span>
-          <img src="assets/Golden/collage.png" alt="Generated collage" data-zoom="assets/Golden/collage.png">
-        </div>
-      </div>
+      <img
+        src="assets/highlights/teaser.png"
+        alt="Na-V2C teaser figure"
+        data-zoom="assets/highlights/teaser.png"
+        style="width:100%; height:auto; border-radius:10px; display:block; cursor:zoom-in;">
     </div>
   </div>
 </section>
@@ -187,6 +170,17 @@
            data-zoom="assets/highlights/pipeline_overview.png">
     </div>
 
+    <div class="layout-novelty-figure reveal" style="margin-top:24px;">
+      <p class="layout-caption">
+        <strong>Evaluation data overview.</strong> Supplementary visual summary of the curated qualitative clips used
+        for end-to-end analysis, covering animation, stylized, and out-of-domain video cases.
+      </p>
+      <img src="assets/highlights/video_dataset_overview.png"
+           alt="Representative video clips used in qualitative evaluation"
+           data-zoom="assets/highlights/video_dataset_overview.png"
+           style="width:100%; height:auto; border-radius:10px; display:block; cursor:zoom-in;">
+    </div>
+
     <h3 class="subsection-title">Event-aware shape-constrained layout</h3>
     <p class="lead">
       Video-derived keyframes impose a chronological constraint that generic collage / packing methods ignore. We
@@ -223,6 +217,17 @@
           <img src="assets/layout_novelty/collage.png" alt="Final collage" data-zoom="assets/layout_novelty/collage.png">
         </div>
       </div>
+    </div>
+
+    <div class="layout-novelty-figure reveal" style="margin-top:24px;">
+      <p class="layout-caption">
+        <strong>Controlled AIC + MPEG-7 evaluation data.</strong> Standard image collections and target shapes used for
+        quantitative layout comparison in the paper and supplementary material.
+      </p>
+      <img src="assets/compare/AIC_data.png"
+           alt="AIC and MPEG-7 evaluation data"
+           data-zoom="assets/compare/AIC_data.png"
+           style="width:100%; height:auto; border-radius:10px; display:block; cursor:zoom-in;">
     </div>
   </div>
 </section>
@@ -331,21 +336,26 @@
     <h3 class="subsection-title">End-to-end visual quality</h3>
     <div class="metrics-wrap reveal">
       <table class="metrics">
-        <caption>End-to-end no-reference visual-quality comparison on the final video-collage outputs. Best in bold.</caption>
+        <caption>Component-wise no-reference visual-quality analysis of different keyframe selectors and collage generators. Best in bold.</caption>
         <thead>
           <tr>
-            <th>Method</th><th>BRISQUE ↓</th><th>TOPIQ-NR ↑</th><th>Q-Align ↑</th>
+            <th>Method</th><th>BRISQUE ↓</th><th>TOPIQ-NR ↑</th><th>Q-Align Aesthetic ↑</th>
           </tr>
         </thead>
         <tbody>
+          <tr class="ours"><td>Na-V2C Selector + Na-V2C Layout</td><td class="best">54.4719</td><td>0.6331</td><td class="best">3.1958</td></tr>
+          <tr><td>DR-DSN Selector + Na-V2C Layout</td><td>58.8234</td><td>0.5423</td><td>3.0491</td></tr>
+          <tr><td>DR-DSN Selector + Colla</td><td>64.8641</td><td>0.5745</td><td>2.9880</td></tr>
           <tr><td>Na-V2C Selector + Colla</td><td>59.6830</td><td class="best">0.6614</td><td>3.1321</td></tr>
-          <tr class="ours"><td>Na-V2C</td><td class="best">54.4719</td><td>0.6331</td><td class="best">3.1958</td></tr>
+          <tr><td>LLMVS Selector + Na-V2C Layout</td><td>54.6956</td><td>0.6120</td><td>3.0215</td></tr>
+          <tr><td>LLMVS Selector + Colla</td><td>63.1505</td><td>0.6242</td><td>2.9517</td></tr>
         </tbody>
       </table>
     </div>
     <p class="metric-caption">
-      Using the same selector and keyframe budget, the proposed layout improves BRISQUE and Q-Align Aesthetic over the
-      Colla-based variant, while TOPIQ-NR slightly favors the Colla rendering.
+      The supplementary component-wise comparison shows that the final result depends on both modules: replacing Colla
+      with Na-V2C Layout improves BRISQUE and Q-Align Aesthetic for both DR-DSN and LLMVS selectors, while
+      Na-V2C Selector + Na-V2C Layout gives the strongest overall balance.
     </p>
   </div>
 </section>
