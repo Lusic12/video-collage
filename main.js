@@ -25,6 +25,7 @@ const KEYFRAME_THUMB_LIMIT = 9;          // show first N keyframes per film
 document.addEventListener("DOMContentLoaded", async () => {
   setupTeaser();
   setupTeaserKeyframes();
+  setupOptimizedStaticImages();
   setupLightbox();
   await loadShowcase();
   setupChartAnimation();
@@ -45,7 +46,7 @@ function setupTeaserKeyframes() {
   
   // Populate teaser with curated keyframes
   const html = TEASER_KEYFRAMES.map((kf, i) => `
-    <img src="${kf}" alt="kf${i+1}" loading="lazy" data-zoom="${kf}" 
+    <img src="${toThumbPath(kf)}" alt="kf${i+1}" loading="lazy" data-zoom="${kf}" 
          onerror="this.style.display='none'">
   `).join("");
   
@@ -125,7 +126,7 @@ function renderFilmCard(f) {
     (kf, i) => `
       <div class="kf-item" style="animation: fadeUp 0.5s ease ${0.05 * i}s both;">
         <span class="kf-no">#${i + 1}</span>
-        <img src="${kf}" alt="keyframe ${i + 1}" loading="lazy" data-zoom="${kf}">
+        <img src="${toThumbPath(kf)}" alt="keyframe ${i + 1}" loading="lazy" data-zoom="${kf}" onerror="this.src='${kf}'">
       </div>`
   ).join("");
 
@@ -189,11 +190,33 @@ function renderFilmCard(f) {
         <div class="stage-label" style="align-self:flex-start;">
           <span class="dot"></span> Stage 2 · Final Collage
         </div>
-        <img src="${f.collage}" alt="collage" loading="lazy" data-zoom="${f.collage}">
+        <img src="${toThumbPath(f.collage)}" alt="collage" loading="lazy" data-zoom="${f.collage}" onerror="this.src='${f.collage}'">
       </div>
     </div>
   `;
   return card;
+}
+
+function setupOptimizedStaticImages() {
+  const images = document.querySelectorAll("img[data-zoom]");
+  images.forEach((img) => {
+    const original = img.dataset.zoom;
+    if (!original || !shouldUseThumb(original)) return;
+    img.src = toThumbPath(original);
+    img.addEventListener("error", () => {
+      if (img.src !== original) img.src = original;
+    }, { once: true });
+  });
+}
+
+function shouldUseThumb(path) {
+  if (!path) return false;
+  return !/\/mask(\.[a-z0-9]+)?$/i.test(path);
+}
+
+function toThumbPath(path) {
+  if (!path || !shouldUseThumb(path)) return path;
+  return path.replace(/\.(png|jpe?g)$/i, ".thumb.webp");
 }
 
 function renderVideoEmbed(video) {
