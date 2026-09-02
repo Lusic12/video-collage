@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#F3EEFF">
+  <meta name="theme-color" content="#C55312">
   <meta name="description"
-    content="Narrative-aware video-to-collage generation (Na-V2C) transforms a raw video into a single structured collage summary through scene-aware keyframe selection, MAPPS-guided reinforcement learning, and event-aware shape-constrained layout generation.">
+    content="Narrative-aware video-to-collage generation (Na-V2C) turns a raw video into one story-readable collage, so viewers can see the events, order, and defining moments at a glance.">
   <meta name="keywords"
-    content="Video Summarization, Animation, Anime, Collage, Layout Generation, Reinforcement Learning, CLIP-IQA, Voronoi">
+    content="Visual Storytelling, Animation, Anime, Video-to-Collage, Layout Generation, Reinforcement Learning, CLIP-IQA, Voronoi">
   <title>Narrative-aware video-to-collage generation (Na-V2C)</title>
 
   <!-- Fonts used by style.css -->
@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;700&family=Nunito:wght@400;500;600;700;800;900&family=Source+Serif+4:ital,opt@0,8..60;1,8..60&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=orange-charcoal-5">
 </head>
 <body>
 
@@ -27,7 +27,7 @@
     <span class="venue-badge">TVCG · Under Review 2026</span>
     <h1 class="hero-title">
       Narrative-aware video-to-collage generation (Na-V2C)
-      <span class="hero-subtitle">A single structured collage summary from raw video</span>
+      <span class="hero-subtitle">Look at the collage — read the story at a glance</span>
     </h1>
 
     <p class="authors">
@@ -39,7 +39,7 @@
     <p class="affil">
       <sup>1</sup>International University, VNU-HCM &nbsp;·&nbsp;
       <sup>2</sup>University of Science, VNU-HCM &nbsp;·&nbsp;
-      <sup>3</sup>University of Technology, VNU-HCM &nbsp;·&nbsp;
+      <sup>3</sup>VinUniversity &nbsp;·&nbsp;
       <sup>4</sup>National Cheng Kung University
     </p>
     <p class="affil-note"><sup>*</sup>Equal contribution &nbsp;&nbsp; <sup>†</sup>Corresponding author</p>
@@ -50,43 +50,25 @@
       <a class="btn btn-accent" href="#gallery">🖼 Results Gallery</a>
       <a class="btn btn-outline" href="#gallery">🎬 Video Dataset</a>
       <a class="btn btn-outline" href="#bibtex">❝ BibTeX</a>
+      <button class="btn btn-outline theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode">◐ Dark mode</button>
     </nav>
   </div>
 </header>
 
 <!-- ════════════════════════════════════════════════════════════════
-     TL;DR
+     RESULTS GALLERY (interactive, from films.json)
      ════════════════════════════════════════════════════════════════ -->
-<section class="section section-tight">
+<section class="section gallery-first" id="gallery">
   <div class="container">
-    <span class="section-eyebrow">TL;DR</span>
-    <h2 class="section-title">One video in, one shape-aware collage out.</h2>
-    <div class="abstract reveal">
-      Na-V2C formulates video summarization as <strong>constructing a single structured collage summary</strong>.
-      Instead of selecting keyframes and arranging them independently, it defines frame utility by contribution to the
-      <strong>final composed collage</strong>: scene-aware segmentation, <strong>MAPPS</strong>-guided PPO selection,
-      foreground <em>event-support</em> extraction, and <strong>shape-constrained event-aware layout</strong> are
-      coupled to preserve narrative progression, visual expressiveness, and spatial coherence.
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════════
-     TEASER / FIGURE 1
-     ════════════════════════════════════════════════════════════════ -->
-<section class="section section-tight">
-  <div class="container">
-    <div class="flagship-figure reveal">
-      <p class="flagship-caption">
-        <strong>Teaser.</strong> Overview figure from the paper. Na-V2C couples narrative-aware keyframe selection,
-        foreground event extraction, and shape-constrained collage composition into a single video-to-collage pipeline.
-      </p>
-      <img
-        src="assets/highlights/teaser.png"
-        alt="Na-V2C teaser figure"
-        data-zoom="assets/highlights/teaser.png"
-        style="width:100%; height:auto; border-radius:10px; display:block; cursor:zoom-in;">
-    </div>
+    <span class="section-eyebrow">Qualitative Gallery</span>
+    <h2 class="section-title">Read the story in every collage</h2>
+    <p class="lead lead-wide">
+      <strong>Pick a film</strong> from the strip below and follow how its story becomes one visual artifact: the
+      <strong>source video</strong>, the <strong>selected narrative moments</strong>, the
+      <strong>target silhouette</strong>, and the <strong>final story collage</strong>. Each result is designed so that
+      characters, event changes, and temporal progression remain legible in a single glance. Click any image to zoom.
+    </p>
+    <div id="showcase-grid"><!-- populated by main.js from assets/films.json --></div>
   </div>
 </section>
 
@@ -97,25 +79,9 @@
   <div class="container">
     <span class="section-eyebrow">Abstract</span>
     <h2 class="section-title">Abstract</h2>
-    <div class="abstract reveal">
-      <p style="margin-bottom:14px;">
-        Classical video summarization usually outputs isolated keyframes or short skims. These preserve semantic
-        coverage, but they rarely provide a single holistic visual artifact that communicates the narrative at a glance.
-        Na-V2C introduces <strong>narrative-aware video-to-collage generation</strong>, where the pipeline is organized
-        around the quality of the <em>final</em> collage summary rather than isolated frame importance.
-      </p>
-      <p style="margin-bottom:14px;">
-        The framework first segments the video into coherent scenes with TransNet&nbsp;V2. Each frame is represented by
-        semantic features together with anime-specific aesthetic attributes from <strong>MAPPS</strong>
-        (Multi-Attribute Prompted Preference Scoring), and a dual-head policy trained with
-        <strong>Proximal Policy Optimization</strong> balances representativeness, temporal diversity, and perceptual quality.
-      </p>
-      <p>
-        Selected frames are converted into compact <em>foreground event supports</em> and arranged within an arbitrary
-        target silhouette by a <strong>shape-constrained, event-aware layout</strong> that preserves chronological
-        readability and foreground integrity. The result is a compact visual summary that communicates what happened,
-        in what order, and through which defining visual moments.
-      </p>
+    <div class="abstract coming-soon-card reveal">
+      <span class="coming-soon-kicker">Coming soon</span>
+      <strong>Abstract update in progress.</strong>
     </div>
   </div>
 </section>
@@ -126,60 +92,153 @@
 <section class="section" id="method">
   <div class="container">
     <span class="section-eyebrow">Method</span>
-    <h2 class="section-title">A coupled selection → abstraction → layout pipeline</h2>
-    <p class="lead">
-      Rather than optimizing selection, abstraction, and layout independently, we connect them through a single
-      collage-oriented view of summarization. The framework unifies four stages.
-    </p>
-
-    <div class="pipeline">
-      <div class="step reveal">
-        <div class="step-num">1</div>
-        <h3>Scene-aware structuring</h3>
-        <p>TransNet&nbsp;V2 segments the video into semantically coherent scenes, with multi-parameter sampling
-           for robustness to varied pacing.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">2</div>
-        <h3>MAPPS aesthetics</h3>
-        <p>A multi-prompt CLIP-IQA module scores six anime attributes — sharpness, colorfulness, brightness,
-           <em>sakuga</em>, cinematic, expression.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">3</div>
-        <h3>RL keyframe selection</h3>
-        <p>A dual-head PPO policy with state-dependent gating balances narrative coverage and aesthetic saliency
-           over the whole summary horizon.</p>
-      </div>
-      <div class="step reveal">
-        <div class="step-num">4</div>
-        <h3>Shape-aware layout</h3>
-        <p>Foreground event supports are arranged inside an arbitrary silhouette via an event-aware Voronoi
-           optimization with chronology-preserving rendering.</p>
-      </div>
-    </div>
-
-    <div class="method-figure reveal" style="margin-top:32px;">
+    <h2 class="section-title">Pipeline overview</h2>
+    <div class="method-figure reveal" style="margin-top:24px;">
       <p class="method-caption">
-        <strong>Pipeline overview.</strong> (I) Scene-aware temporal structuring with TransNet&nbsp;V2.
+        (I) Scene-aware temporal structuring with TransNet&nbsp;V2.
         (II) MAPPS computes anime-specific aesthetic attributes <em>q<sub>t</sub></em> while a visual encoder extracts
         frame features <em>v<sub>t</sub></em>. (III) The fused descriptor is processed by a shared Transformer&nbsp;+&nbsp;BiLSTM
         backbone; a dual-head policy with gating produces the fused policy <em>π<sub>fused</sub></em> for selection under PPO.
         (IV) Selected keyframes become foreground event supports and are arranged via shape-constrained layout generation.
       </p>
-      <img src="assets/highlights/pipeline_overview.png" alt="Full pipeline overview"
-           data-zoom="assets/highlights/pipeline_overview.png">
+      <img src="assets/method/na_v2c_framework.jpg" alt="Na-V2C framework from scene structuring to collage generation"
+           data-zoom="assets/method/na_v2c_framework.jpg">
     </div>
 
-    <div class="layout-novelty-figure reveal" style="margin-top:24px;">
-      <p class="layout-caption">
-        <strong>Evaluation data overview.</strong> Supplementary visual summary of the curated qualitative clips used
-        for end-to-end analysis, covering animation, stylized, and out-of-domain video cases.
+    <div class="method-detail-section reveal">
+      <div class="story-figure-heading">
+        <span class="section-eyebrow">Inside the pipeline</span>
+        <h3>Selection and layout, step by step.</h3>
+        <p>These detailed views expose the key design choices behind the compact overview, from temporal selection to topology-aware placement and final warping.</p>
+      </div>
+      <div class="method-detail-grid">
+        <figure class="method-detail-card method-detail-wide">
+          <figcaption><strong>Scene-aware keyframe selection.</strong> Temporal structure, visual features, MAPPS attributes, and the learned selection policy are optimized as one sequence model.</figcaption>
+          <img src="assets/method/keyframe_selection.jpg" alt="Scene-aware keyframe selection architecture" loading="lazy" data-zoom="assets/method/keyframe_selection.jpg">
+        </figure>
+        <figure class="method-detail-card method-detail-wide">
+          <figcaption><strong>Dual-head policy.</strong> Narrative and aesthetic decisions are combined by a state-dependent gate before PPO optimization.</figcaption>
+          <img src="assets/method/dual_head_policy.jpg" alt="Dual-head policy with state-dependent gating" loading="lazy" data-zoom="assets/method/dual_head_policy.jpg">
+        </figure>
+        <figure class="method-detail-card method-detail-wide">
+          <figcaption><strong>Saliency-guided rendering.</strong> Foreground event supports guide the final deformation so important content survives shape-constrained composition.</figcaption>
+          <img src="assets/method/layout_warp_visualize.png" alt="Saliency-guided layout warping and composition" loading="lazy" data-zoom="assets/method/layout_warp_visualize.png">
+        </figure>
+      </div>
+    </div>
+
+    <div class="story-comparison-figure reveal" style="margin-top:24px;">
+      <div class="story-figure-heading">
+        <span class="section-eyebrow">Figure 5 · Final story results</span>
+        <h3>One story, four layout methods.</h3>
+        <p>
+          Each row uses the same video and target silhouette. Compare how <strong>Ours</strong>, ISCP, Colla, and
+          SC&nbsp;+&nbsp;Mask preserve the event sequence, foreground characters, and the visual story inside the same shape.
+        </p>
+      </div>
+
+      <div class="story-comparison-grid" role="table" aria-label="Final story comparison across four methods">
+        <div class="story-grid-corner" role="columnheader">Clip</div>
+        <div class="story-grid-header ours" role="columnheader">Ours</div>
+        <div class="story-grid-header" role="columnheader">ISCP</div>
+        <div class="story-grid-header" role="columnheader">Colla</div>
+        <div class="story-grid-header" role="columnheader">SC + Mask</div>
+
+        <div class="story-row-label" role="rowheader">Swapped</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/swapped/ours.png" alt="Swapped — Ours" loading="lazy" data-zoom="assets/story_comparison/swapped/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/swapped/iscp.png" alt="Swapped — ISCP" loading="lazy" data-zoom="assets/story_comparison/swapped/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/swapped/colla.png" alt="Swapped — Colla" loading="lazy" data-zoom="assets/story_comparison/swapped/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/swapped/sc.png" alt="Swapped — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/swapped/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">Your Name</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/your_name/ours.png" alt="Your Name — Ours" loading="lazy" data-zoom="assets/story_comparison/your_name/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/your_name/iscp.png" alt="Your Name — ISCP" loading="lazy" data-zoom="assets/story_comparison/your_name/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/your_name/colla.png" alt="Your Name — Colla" loading="lazy" data-zoom="assets/story_comparison/your_name/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/your_name/sc.png" alt="Your Name — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/your_name/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">Nobody</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/nobody/ours.png" alt="Nobody — Ours" loading="lazy" data-zoom="assets/story_comparison/nobody/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/nobody/iscp.png" alt="Nobody — ISCP" loading="lazy" data-zoom="assets/story_comparison/nobody/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/nobody/colla.png" alt="Nobody — Colla" loading="lazy" data-zoom="assets/story_comparison/nobody/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/nobody/sc.png" alt="Nobody — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/nobody/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">KPop Demon Hunters</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/kpop_demon_hunter/ours.png" alt="KPop Demon Hunters — Ours" loading="lazy" data-zoom="assets/story_comparison/kpop_demon_hunter/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/kpop_demon_hunter/iscp.png" alt="KPop Demon Hunters — ISCP" loading="lazy" data-zoom="assets/story_comparison/kpop_demon_hunter/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/kpop_demon_hunter/colla.png" alt="KPop Demon Hunters — Colla" loading="lazy" data-zoom="assets/story_comparison/kpop_demon_hunter/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/kpop_demon_hunter/sc.png" alt="KPop Demon Hunters — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/kpop_demon_hunter/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">Inside Out</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/inside_out/ours.png" alt="Inside Out — Ours" loading="lazy" data-zoom="assets/story_comparison/inside_out/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/inside_out/iscp.png" alt="Inside Out — ISCP" loading="lazy" data-zoom="assets/story_comparison/inside_out/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/inside_out/colla.png" alt="Inside Out — Colla" loading="lazy" data-zoom="assets/story_comparison/inside_out/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/inside_out/sc.png" alt="Inside Out — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/inside_out/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">Stranger Things</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/stranger_thing/ours.png" alt="Stranger Things — Ours" loading="lazy" data-zoom="assets/story_comparison/stranger_thing/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/stranger_thing/iscp.png" alt="Stranger Things — ISCP" loading="lazy" data-zoom="assets/story_comparison/stranger_thing/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/stranger_thing/colla.png" alt="Stranger Things — Colla" loading="lazy" data-zoom="assets/story_comparison/stranger_thing/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/stranger_thing/sc.png" alt="Stranger Things — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/stranger_thing/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">Luca</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/luca/ours.png" alt="Luca — Ours" loading="lazy" data-zoom="assets/story_comparison/luca/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/luca/iscp.png" alt="Luca — ISCP" loading="lazy" data-zoom="assets/story_comparison/luca/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/luca/colla.png" alt="Luca — Colla" loading="lazy" data-zoom="assets/story_comparison/luca/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/luca/sc.png" alt="Luca — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/luca/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">Umaru</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/umaru/ours.png" alt="Umaru — Ours" loading="lazy" data-zoom="assets/story_comparison/umaru/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/umaru/iscp.png" alt="Umaru — ISCP" loading="lazy" data-zoom="assets/story_comparison/umaru/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/umaru/colla.png" alt="Umaru — Colla" loading="lazy" data-zoom="assets/story_comparison/umaru/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/umaru/sc.png" alt="Umaru — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/umaru/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">10 Lives</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/final/10_lives/ours.png" alt="10 Lives — Ours" loading="lazy" data-zoom="assets/story_comparison/final/10_lives/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/10_lives/iscp.png" alt="10 Lives — ISCP" loading="lazy" data-zoom="assets/story_comparison/final/10_lives/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/10_lives/colla.png" alt="10 Lives — Colla" loading="lazy" data-zoom="assets/story_comparison/final/10_lives/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/10_lives/sc.png" alt="10 Lives — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/final/10_lives/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">Cat</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/final/cat/ours.png" alt="Cat — Ours" loading="lazy" data-zoom="assets/story_comparison/final/cat/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/cat/iscp.png" alt="Cat — ISCP" loading="lazy" data-zoom="assets/story_comparison/final/cat/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/cat/colla.png" alt="Cat — Colla" loading="lazy" data-zoom="assets/story_comparison/final/cat/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/cat/sc.png" alt="Cat — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/final/cat/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">Garfield</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/final/garfield/ours.png" alt="Garfield — Ours" loading="lazy" data-zoom="assets/story_comparison/final/garfield/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/garfield/iscp.png" alt="Garfield — ISCP" loading="lazy" data-zoom="assets/story_comparison/final/garfield/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/garfield/colla.png" alt="Garfield — Colla" loading="lazy" data-zoom="assets/story_comparison/final/garfield/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/garfield/sc.png" alt="Garfield — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/final/garfield/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">House of Magic</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/final/house_of_magic/ours.png" alt="House of Magic — Ours" loading="lazy" data-zoom="assets/story_comparison/final/house_of_magic/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/house_of_magic/iscp.png" alt="House of Magic — ISCP" loading="lazy" data-zoom="assets/story_comparison/final/house_of_magic/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/house_of_magic/colla.png" alt="House of Magic — Colla" loading="lazy" data-zoom="assets/story_comparison/final/house_of_magic/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/house_of_magic/sc.png" alt="House of Magic — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/final/house_of_magic/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">Imaginary</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/final/imaginary/ours.png" alt="Imaginary — Ours" loading="lazy" data-zoom="assets/story_comparison/final/imaginary/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/imaginary/iscp.png" alt="Imaginary — ISCP" loading="lazy" data-zoom="assets/story_comparison/final/imaginary/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/imaginary/colla.png" alt="Imaginary — Colla" loading="lazy" data-zoom="assets/story_comparison/final/imaginary/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/imaginary/sc.png" alt="Imaginary — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/final/imaginary/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">Secret Life of Pets</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/final/secret_life_of_pets/ours.png" alt="Secret Life of Pets — Ours" loading="lazy" data-zoom="assets/story_comparison/final/secret_life_of_pets/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/secret_life_of_pets/iscp.png" alt="Secret Life of Pets — ISCP" loading="lazy" data-zoom="assets/story_comparison/final/secret_life_of_pets/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/secret_life_of_pets/colla.png" alt="Secret Life of Pets — Colla" loading="lazy" data-zoom="assets/story_comparison/final/secret_life_of_pets/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/secret_life_of_pets/sc.png" alt="Secret Life of Pets — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/final/secret_life_of_pets/sc.png"></div>
+
+        <div class="story-row-label" role="rowheader">Your Name · Final</div>
+        <div class="story-result ours" role="cell"><img src="assets/story_comparison/final/your_name/ours.png" alt="Your Name final — Ours" loading="lazy" data-zoom="assets/story_comparison/final/your_name/ours.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/your_name/iscp.png" alt="Your Name final — ISCP" loading="lazy" data-zoom="assets/story_comparison/final/your_name/iscp.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/your_name/colla.png" alt="Your Name final — Colla" loading="lazy" data-zoom="assets/story_comparison/final/your_name/colla.png"></div>
+        <div class="story-result" role="cell"><img src="assets/story_comparison/final/your_name/sc.png" alt="Your Name final — SC + Mask" loading="lazy" data-zoom="assets/story_comparison/final/your_name/sc.png"></div>
+      </div>
+      <p class="story-figure-caption">
+        <strong>Final comparison.</strong> The same qualitative cases used in the supplementary comparison are shown
+        together so the viewer can judge story readability, foreground preservation, and shape-constrained composition
+        across all four methods.
       </p>
-      <img src="assets/highlights/video_dataset_overview.png"
-           alt="Representative video clips used in qualitative evaluation"
-           data-zoom="assets/highlights/video_dataset_overview.png"
-           style="width:100%; height:auto; border-radius:10px; display:block; cursor:zoom-in;">
     </div>
 
     <h3 class="subsection-title">Event-aware shape-constrained layout</h3>
@@ -191,63 +250,15 @@
       thin-plate-spline warping.
     </p>
 
-    <div class="layout-novelty-figure reveal">
+    <div class="layout-novelty-figure anchor-first-figure reveal">
       <p class="layout-caption">
-        <strong>Layout construction.</strong> From the target mask we compute a medial axis, seed topology-aware sites,
-        optimize an event-aware weighted Voronoi partition, and render keyframes into the optimized cells.
+        <strong>Anchor-first initialization.</strong> Skeleton anchors and a core–shell prior provide stable,
+        event-aware sites inside the target silhouette.
       </p>
-      <div class="layout-grid">
-        <div class="layout-cell" style="--stagger:0">
-          <span class="layout-label">Target mask</span>
-          <img src="assets/layout_novelty/mask.png" alt="Target mask" data-zoom="assets/layout_novelty/mask.png">
-        </div>
-        <div class="layout-cell" style="--stagger:1">
-          <span class="layout-label">Medial-axis skeleton</span>
-          <img src="assets/layout_novelty/skeleton.png" alt="Skeleton" data-zoom="assets/layout_novelty/skeleton.png">
-        </div>
-        <div class="layout-cell" style="--stagger:2">
-          <span class="layout-label">Voronoi init</span>
-          <img src="assets/layout_novelty/voronoi_init.png" alt="Voronoi initialization" data-zoom="assets/layout_novelty/voronoi_init.png">
-        </div>
-        <div class="layout-cell" style="--stagger:3">
-          <span class="layout-label">Optimized partition</span>
-          <img src="assets/layout_novelty/voronoi_opt.png" alt="Optimized Voronoi" data-zoom="assets/layout_novelty/voronoi_opt.png">
-        </div>
-        <div class="layout-cell" style="--stagger:4">
-          <span class="layout-label">Final collage</span>
-          <img src="assets/layout_novelty/collage.png" alt="Final collage" data-zoom="assets/layout_novelty/collage.png">
-        </div>
-      </div>
+      <img src="assets/method/anchor_first.png" alt="Anchor-first topology-aware layout initialization"
+           loading="lazy" data-zoom="assets/method/anchor_first.png">
     </div>
 
-    <div class="layout-novelty-figure reveal" style="margin-top:24px;">
-      <p class="layout-caption">
-        <strong>Controlled AIC + MPEG-7 evaluation data.</strong> Standard image collections and target shapes used for
-        quantitative layout comparison in the paper and supplementary material.
-      </p>
-      <img src="assets/compare/AIC_data.png"
-           alt="AIC and MPEG-7 evaluation data"
-           data-zoom="assets/compare/AIC_data.png"
-           style="width:100%; height:auto; border-radius:10px; display:block; cursor:zoom-in;">
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════════
-     RESULTS GALLERY (interactive, from films.json)
-     ════════════════════════════════════════════════════════════════ -->
-<section class="section" id="gallery">
-  <div class="container">
-    <span class="section-eyebrow">Qualitative Gallery</span>
-    <h2 class="section-title">Results across films, scenes &amp; silhouettes</h2>
-    <p class="lead lead-wide">
-      <strong>Pick a film</strong> from the strip below to explore its full pipeline on a real clip: the
-      <strong>source video</strong>, the <strong>RL-selected keyframes</strong>, the
-      <strong>target silhouette</strong>, and the <strong>generated collage</strong>. Our method handles diverse
-      characters, scenes, and complex target shapes — including out-of-domain 3D-film (<em>Avatar&nbsp;3</em>) and
-      live-action (<em>Squirrel</em>) clips. Click any image to zoom.
-    </p>
-    <div id="showcase-grid"><!-- populated by main.js from assets/films.json --></div>
   </div>
 </section>
 
@@ -256,13 +267,37 @@
      ════════════════════════════════════════════════════════════════ -->
 <section class="section" id="comparison">
   <div class="container">
-    <span class="section-eyebrow">Comparison</span>
-    <h2 class="section-title">Quantitative results aligned with the paper</h2>
+    <span class="section-eyebrow">Experiments</span>
+    <h2 class="section-title">Experimental results</h2>
     <p class="lead lead-wide">
       Under identical inputs and the same target silhouette, our event-aware layout preserves foreground
       characters and narrative readability, whereas baselines more often fragment salient regions or produce
       unstable packing inside irregular masks.
     </p>
+
+    <div class="protocol-figure reveal" id="evaluation-protocol">
+      <div class="protocol-heading">
+        <span class="section-eyebrow">Evaluation protocol</span>
+        <strong>Three evidence tracks keep the story-reading claim honest.</strong>
+      </div>
+      <div class="protocol-grid">
+        <div class="protocol-card">
+          <span class="protocol-number">01</span>
+          <h3>Sakuga-42M</h3>
+          <p>Training and quantitative keyframe evaluation on the 1,000 longest clips from more than 150,000 raw animation videos and approximately 1.4M segmented clips (minimum 18 frames).</p>
+        </div>
+        <div class="protocol-card">
+          <span class="protocol-number">02</span>
+          <h3>Curated video clips</h3>
+          <p>Cartoon, stylized-animation, and selected out-of-domain clips for qualitative inspection and user study — not a formal generalization benchmark.</p>
+        </div>
+        <div class="protocol-card">
+          <span class="protocol-number">03</span>
+          <h3>AIC + MPEG-7</h3>
+          <p>Six standard AIC image collections and six MPEG-7 target masks for controlled compactness, overlap, shape, and saliency evaluation.</p>
+        </div>
+      </div>
+    </div>
 
     <div class="compare-row reveal">
       <div class="compare-cell">
@@ -308,8 +343,9 @@
       </table>
     </div>
     <p class="metric-caption">
-      Our selector improves aesthetic ranking (MPR, Top10) by a large margin <em>without</em> sacrificing coverage or
-      redundancy metrics.
+      MPR and Top10 measure aesthetic selection; RecErr and Fréchet distance measure representativeness; Temporal
+      Coverage measures temporal coverage; DistGap and LPIPS Gap measure redundancy. Our selector improves aesthetic
+      ranking by a large margin <em>without</em> sacrificing the other reported metrics.
     </p>
 
     <!-- EQ2: layout under AIC+MPEG-7 -->
@@ -399,6 +435,26 @@
       </div>
     </div>
 
+    <div class="ablation-evidence reveal">
+      <div class="story-figure-heading">
+        <span class="section-eyebrow">Loss diagnostics</span>
+        <h3>Why the full layout objective is needed.</h3>
+        <p>Controlled removals and stress tests show how each constraint affects cell allocation, temporal organization, and renderability.</p>
+      </div>
+      <figure class="ablation-evidence-card">
+        <figcaption><strong>Loss-function ablation.</strong> The full objective is compared with variants that remove individual layout losses.</figcaption>
+        <img src="assets/ablation_details/ablation_loss_all.png" alt="Visual comparison for the complete layout loss ablation" loading="lazy" data-zoom="assets/ablation_details/ablation_loss_all.png">
+      </figure>
+      <figure class="ablation-evidence-card">
+        <figcaption><strong>Capacity-loss stress test.</strong> Capacity regularization prevents degenerate area allocation under a rectangular target.</figcaption>
+        <img src="assets/ablation_details/lcap_rect_stress.png" alt="Capacity-loss rectangular stress test" loading="lazy" data-zoom="assets/ablation_details/lcap_rect_stress.png">
+      </figure>
+      <figure class="ablation-evidence-card">
+        <figcaption><strong>Loss formulation.</strong> Visual diagnostics connect the optimization terms to their intended geometric behavior.</figcaption>
+        <img src="assets/ablation_details/loss_functions.jpg" alt="Illustration of the layout loss functions" loading="lazy" data-zoom="assets/ablation_details/loss_functions.jpg">
+      </figure>
+    </div>
+
     <ul class="ablation-list">
       <li><strong>Scene segmentation.</strong> TransNet&nbsp;V2 with adaptive durations gives the best balance for
         aesthetic selection; very short segments lose temporal context while overly long ones dilute visual focus.</li>
@@ -418,23 +474,23 @@
 <section class="section" id="user-study">
   <div class="container">
     <span class="section-eyebrow">User Study</span>
-    <h2 class="section-title">User-study protocol reported in the paper</h2>
+    <h2 class="section-title">Can viewers read the story from the collage?</h2>
     <p class="lead lead-wide">
       The current manuscript reports the <strong>questionnaire design and evaluation tasks</strong> rather than a
-      condensed leaderboard figure. The study separates end-to-end video-collage judgment from controlled
-      MPEG-7 layout judgment.
+      condensed leaderboard figure. The study asks whether viewers can recognize the story and judge the collage
+      layout, separating end-to-end narrative readability from controlled MPEG-7 shape judgment.
     </p>
 
     <div class="user-study-figure reveal">
       <p class="study-caption">
-        <strong>Two questionnaire formats.</strong> One evaluates full video-to-collage summaries from source clips;
-        the other isolates shape-preservation quality under controlled target masks.
+        <strong>Two questionnaire formats.</strong> One evaluates whether a collage communicates the story of a source
+        clip; the other isolates shape-preservation quality under controlled target masks.
       </p>
       <div class="abstract reveal" style="margin-top:18px; text-align:left;">
         <p style="margin-bottom:14px;">
           <strong>Format 1: video-based evaluation.</strong> Across 9 clips, participants watch the source clip, rate
-          event coverage of the selected keyframes (Q1), choose a preferred collage among randomized A/B/C/D outputs
-          (Q2), and score each option from 1 to 5 as a visual summary (Q3).
+          event coverage of the selected keyframes (Q1), choose the collage that best communicates the story among
+          randomized A/B/C/D outputs (Q2), and score each option from 1 to 5 as a visual story (Q3).
         </p>
         <p style="margin-bottom:14px;">
           <strong>Format 2: MPEG-7 layout evaluation.</strong> Across 3 target masks, participants inspect a target
@@ -450,24 +506,6 @@
         The paper-side summary table reports 27 question blocks for the video-based study and 6 question blocks for the
         MPEG-7 layout study.
       </p>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════════════════════════════════════════════════════════
-     DID YOU KNOW?
-     ════════════════════════════════════════════════════════════════ -->
-<section class="section section-tight">
-  <div class="container">
-    <span class="section-eyebrow">Did You Know?</span>
-    <h2 class="section-title">"Sakuga" — the frames worth keeping</h2>
-    <div class="abstract reveal">
-      In animation fandom, <strong>sakuga</strong> (作画) refers to moments of exceptionally fluid, expressive, or
-      technically dazzling animation. These peaks carry much of a clip's narrative and emotional weight, yet generic
-      diversity–representativeness summarizers — tuned for pixel fidelity, not artistic impact — routinely
-      <em>miss</em> them. MAPPS injects an explicit <em>sakuga</em> attribute (alongside cinematic composition and
-      character expression) directly into the RL policy, so the selector is rewarded for keeping the frames a human
-      editor would actually choose for a poster.
     </div>
   </div>
 </section>

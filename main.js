@@ -2,29 +2,25 @@
 // Project Page — dynamic showcase, lightbox, scroll-reveal
 // ════════════════════════════════════════════════════════════════
 
-const TEASER_VIDEO = {
-  youtube: "https://www.youtube.com/watch?v=yebNIHKAC4A",
-  segment: "02:50 - 03:02",
-  fallback: "https://drive.google.com/file/d/1CPJlqXsJ7f2c3dvMR1xy4j9eiNKNZuRY/view",
-  poster: "assets/Golden/keyframes/frame_000125.jpg",
-  title: "Golden teaser clip"
-};
-const TEASER_KEYFRAMES = [
-  "assets/Golden/keyframes/frame_000045.jpg",
-  "assets/Golden/keyframes/frame_000105.jpg",
-  "assets/Golden/keyframes/frame_000110.jpg",
-  "assets/Golden/keyframes/frame_000115.jpg",
-  "assets/Golden/keyframes/frame_000125.jpg",
-  "assets/Golden/keyframes/frame_000130.jpg",
-  "assets/Golden/keyframes/frame_000135.jpg",
-  "assets/Golden/keyframes/frame_000245.jpg",
-  "assets/Golden/keyframes/frame_000250.jpg"
-];
 const KEYFRAME_THUMB_LIMIT = 9;          // show first N keyframes per film
 
+// Keep the public showcase aligned with the curated video results used in
+// supplementary/final_results.tex and supplementary/final_comparison.tex.
+// Swapped is intentionally excluded until its complete web asset bundle
+// (source video, keyframes, and mask) is available.
+const SHOWCASE_FILM_ORDER = [
+  "Your_name",
+  "Nobody",
+  "Kpop_demon_hunter",
+  "Inside_out",
+  "Stranger_thing",
+  "Luca",
+  "Umaru"
+];
+const SHOWCASE_FILM_RANK = new Map(SHOWCASE_FILM_ORDER.map((name, index) => [name, index]));
+
 document.addEventListener("DOMContentLoaded", async () => {
-  setupTeaser();
-  setupTeaserKeyframes();
+  setupThemeToggle();
   setupOptimizedStaticImages();
   setupLightbox();
   await loadShowcase();
@@ -32,25 +28,40 @@ document.addEventListener("DOMContentLoaded", async () => {
   setupReveal();
 });
 
-// ── Teaser ──────────────────────────────────────────────────────
-function setupTeaser() {
-  const container = document.getElementById("teaser-video");
-  if (!container) return;
-  container.innerHTML = renderVideoEmbed(TEASER_VIDEO);
-}
+// ── Theme ───────────────────────────────────────────────────────
+function setupThemeToggle() {
+  const button = document.getElementById("theme-toggle");
+  if (!button) return;
 
-// ── Teaser Keyframes (Fallback grid) ───────────────────────────
-function setupTeaserKeyframes() {
-  const grid = document.getElementById("teaser-keyframes");
-  if (!grid) return;
-  
-  // Populate teaser with curated keyframes
-  const html = TEASER_KEYFRAMES.map((kf, i) => `
-    <img src="${toThumbPath(kf)}" alt="kf${i+1}" loading="lazy" data-zoom="${kf}" 
-         onerror="this.style.display='none'">
-  `).join("");
-  
-  grid.innerHTML = html;
+  const root = document.documentElement;
+  let storedTheme = null;
+  try {
+    storedTheme = localStorage.getItem("na-v2c-theme");
+  } catch (_) {
+    // Storage may be unavailable in privacy-restricted browsers.
+  }
+  root.dataset.theme = storedTheme === "dark" ? "dark" : "light";
+
+  const updateButton = () => {
+    const dark = root.dataset.theme === "dark";
+    button.textContent = dark ? "☀ Light mode" : "◐ Dark mode";
+    button.setAttribute("aria-label", dark ? "Switch to light mode" : "Switch to dark mode");
+    button.setAttribute("aria-pressed", String(dark));
+    const themeColor = document.querySelector('meta[name="theme-color"]');
+    if (themeColor) themeColor.content = dark ? "#171717" : "#C55312";
+  };
+
+  button.addEventListener("click", () => {
+    root.dataset.theme = root.dataset.theme === "dark" ? "light" : "dark";
+    try {
+      localStorage.setItem("na-v2c-theme", root.dataset.theme);
+    } catch (_) {
+      // Keep the toggle functional even when persistence is unavailable.
+    }
+    updateButton();
+  });
+
+  updateButton();
 }
 
 // ── Showcase ────────────────────────────────────────────────────
@@ -67,7 +78,10 @@ async function loadShowcase() {
     return;
   }
 
-  const films = data.films || [];
+  const films = (data.films || [])
+    .filter((film) => SHOWCASE_FILM_RANK.has(film.name))
+    .sort((a, b) => SHOWCASE_FILM_RANK.get(a.name) - SHOWCASE_FILM_RANK.get(b.name))
+    .map((film, index) => ({ ...film, displayIndex: index + 1 }));
   if (!films.length) {
     grid.innerHTML = `<div class="placeholder">No films found.</div>`;
     return;
@@ -99,7 +113,7 @@ async function loadShowcase() {
     chip.innerHTML = `
       <img class="sel-thumb" src="${f.mask}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">
       <span class="sel-meta">
-        <span class="sel-idx">#${String(f.idx).padStart(2, '0')}</span>
+        <span class="sel-idx">#${f.displayIndex}</span>
         <span class="sel-name">${escapeHtml(niceName(f))}</span>
       </span>`;
     chip.addEventListener("click", () => selectFilm(i));
@@ -110,7 +124,7 @@ async function loadShowcase() {
 }
 
 function niceName(f) {
-  return String(f.name || "").replace(/_/g, " ").trim() || `Film ${f.idx}`;
+  return String(f.name || "").replace(/_/g, " ").trim() || `Film ${f.displayIndex}`;
 }
 
 function renderFilmCard(f) {
@@ -136,7 +150,7 @@ function renderFilmCard(f) {
 
   card.innerHTML = `
     <div class="film-header">
-      <span class="film-idx">#${String(f.idx).padStart(2, '0')}</span>
+      <span class="film-idx">#${f.displayIndex}</span>
       <span class="film-title">${escapeHtml(f.title)}</span>
       <span class="film-meta">${f.segment ? `Segment: ${escapeHtml(f.segment)} · ` : ""}${f.n_keyframes} keyframes</span>
     </div>
@@ -179,9 +193,10 @@ function renderFilmCard(f) {
         </div>
         <div class="kf-config">
           <span class="cfg-label">Config</span>
-          <span class="cfg-chip">budget_ratio <b>0.2</b></span>
-          <span class="cfg-chip">stride <b>5</b></span>
-          <span class="cfg-chip">scene_threshold <b>0.9</b> <em>(TransNetv2)</em></span>
+          <span class="cfg-chip">frame_stride <b>20</b></span>
+          <span class="cfg-chip">budget_ratio <b>0.1</b></span>
+          <span class="cfg-chip">scene_threshold <b>0.9</b> <em>(TransNet V2)</em></span>
+          <span class="cfg-chip">min_scene_length <b>100</b></span>
         </div>
       </div>
 
@@ -211,6 +226,14 @@ function setupOptimizedStaticImages() {
 
 function shouldUseThumb(path) {
   if (!path) return false;
+  // Collages are replaced as result updates. Keep the full PNG here so the
+  // gallery never serves a stale generated thumbnail/view asset.
+  if (/\/collage\.(png|jpe?g)$/i.test(path)) return false;
+  // The final four-way comparison is already a curated, display-sized PNG.
+  if (/\/story_comparison\/.*\.(png|jpe?g)$/i.test(path)) return false;
+  // Newly exported paper figures are already browser-ready and do not have
+  // generated thumbnail/view companions.
+  if (/\/(?:method|ablation_details)\/.*\.(png|jpe?g)$/i.test(path)) return false;
   return !/\/mask(\.[a-z0-9]+)?$/i.test(path);
 }
 
