@@ -191,13 +191,6 @@ function renderFilmCard(f) {
         <div class="kf-grid">
           ${kfHtml}${extraHtml}
         </div>
-        <div class="kf-config">
-          <span class="cfg-label">Config</span>
-          <span class="cfg-chip">frame_stride <b>20</b></span>
-          <span class="cfg-chip">budget_ratio <b>0.1</b></span>
-          <span class="cfg-chip">scene_threshold <b>0.9</b> <em>(TransNet V2)</em></span>
-          <span class="cfg-chip">min_scene_length <b>100</b></span>
-        </div>
       </div>
 
       <!-- ── Collage column ───────────────────────── -->
