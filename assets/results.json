@@ -1,0 +1,1291 @@
+{
+  "results": [
+    {
+      "id": "your-name",
+      "title": "Your Name",
+      "category": "Anime",
+      "heading": "Two lives, one composition.",
+      "story": "A girl stands apart in a crowd (01). She and a boy meet back to back (02), and a red cord loops between them (03–04), then stretches thin as they are pulled apart (05–06). A boy stands in a crowd of his own (07) and, last, on a city street (08).",
+      "look": "Four of the eight frames show the red cord (03–06). Find where they sit inside the heart.",
+      "thumb": "assets/results/your-name/thumb.png",
+      "keyframes": [
+        {
+          "src": "assets/results/your-name/keyframes/frame_000130.jpg",
+          "frame": 130,
+          "order": 1
+        },
+        {
+          "src": "assets/results/your-name/keyframes/frame_000471.jpg",
+          "frame": 471,
+          "order": 2
+        },
+        {
+          "src": "assets/results/your-name/keyframes/frame_000476.jpg",
+          "frame": 476,
+          "order": 3
+        },
+        {
+          "src": "assets/results/your-name/keyframes/frame_000481.jpg",
+          "frame": 481,
+          "order": 4
+        },
+        {
+          "src": "assets/results/your-name/keyframes/frame_000751.jpg",
+          "frame": 751,
+          "order": 5
+        },
+        {
+          "src": "assets/results/your-name/keyframes/frame_000771.jpg",
+          "frame": 771,
+          "order": 6
+        },
+        {
+          "src": "assets/results/your-name/keyframes/frame_000941.jpg",
+          "frame": 941,
+          "order": 7
+        },
+        {
+          "src": "assets/results/your-name/keyframes/frame_001226.jpg",
+          "frame": 1226,
+          "order": 8
+        }
+      ],
+      "outputs": {
+        "ours": "assets/results/your-name/ours.png",
+        "sc": "assets/results/your-name/sc.png"
+      },
+      "comparison": {
+        "iscp": "assets/results/your-name/comparison/iscp.png",
+        "colla": "assets/results/your-name/comparison/colla.png"
+      },
+      "paperLabel": "fig_comparison",
+      "keyframeLabel": "Keyframes shown in the paper"
+    },
+    {
+      "id": "garfield",
+      "title": "Garfield",
+      "category": "Animation",
+      "heading": "An encounter, told through expressions.",
+      "story": "Late at night, a tiny orange kitten sits alone on a box, as if someone has left it behind. Its eyes are wide and searching, and for a moment it lowers them, giving up (01–02). Then a man notices it and kneels down on the empty street (03). The kitten looks up at him, pleading, as he cups it in both hands (04). He lifts it toward his face (05); it stares back, still unsure whether to trust him (06). He holds it close, and it is no longer alone (07).",
+      "look": "Close-ups of the kitten alternate with shots of the man. The near-identical close-ups (01, 02, 04, 06) each keep their own cell.",
+      "thumb": "assets/results/garfield/thumb.png",
+      "keyframes": [
+        {
+          "src": "assets/results/garfield/keyframes/frame_000005.jpg",
+          "frame": 5,
+          "order": 1
+        },
+        {
+          "src": "assets/results/garfield/keyframes/frame_000256.jpg",
+          "frame": 256,
+          "order": 2
+        },
+        {
+          "src": "assets/results/garfield/keyframes/frame_000366.jpg",
+          "frame": 366,
+          "order": 3
+        },
+        {
+          "src": "assets/results/garfield/keyframes/frame_000856.jpg",
+          "frame": 856,
+          "order": 4
+        },
+        {
+          "src": "assets/results/garfield/keyframes/frame_001006.jpg",
+          "frame": 1006,
+          "order": 5
+        },
+        {
+          "src": "assets/results/garfield/keyframes/frame_001078.jpg",
+          "frame": 1078,
+          "order": 6
+        },
+        {
+          "src": "assets/results/garfield/keyframes/frame_001180.jpg",
+          "frame": 1180,
+          "order": 7
+        }
+      ],
+      "outputs": {
+        "ours": "assets/results/garfield/ours.png",
+        "sc": "assets/results/garfield/sc.png"
+      },
+      "comparison": {
+        "iscp": "assets/results/garfield/comparison/iscp.png",
+        "colla": "assets/results/garfield/comparison/colla.png"
+      },
+      "paperLabel": "fig_comparison",
+      "keyframeLabel": "Keyframes shown in the paper"
+    },
+    {
+      "id": "10-lives",
+      "title": "10 Lives",
+      "category": "Animation",
+      "heading": "A character, across changing moments.",
+      "story": "A cat sprawls on a patterned rug (01–02) while a van pulls up outside (03). It looks up, alert (04). A man in glasses appears at the door (05–06), the cat settles on a stack of pizza boxes (07), and the clip ends with two people indoors (08).",
+      "look": "The cat changes pose and place in almost every frame. Check which of its appearances keep the whole body in the cell.",
+      "thumb": "assets/results/10-lives/thumb.png",
+      "keyframes": [
+        {
+          "src": "assets/results/10-lives/keyframes/frame_000496.jpg",
+          "frame": 496,
+          "order": 1
+        },
+        {
+          "src": "assets/results/10-lives/keyframes/frame_000513.jpg",
+          "frame": 513,
+          "order": 2
+        },
+        {
+          "src": "assets/results/10-lives/keyframes/frame_000663.jpg",
+          "frame": 663,
+          "order": 3
+        },
+        {
+          "src": "assets/results/10-lives/keyframes/frame_000803.jpg",
+          "frame": 803,
+          "order": 4
+        },
+        {
+          "src": "assets/results/10-lives/keyframes/frame_000848.jpg",
+          "frame": 848,
+          "order": 5
+        },
+        {
+          "src": "assets/results/10-lives/keyframes/frame_000893.jpg",
+          "frame": 893,
+          "order": 6
+        },
+        {
+          "src": "assets/results/10-lives/keyframes/frame_000961.jpg",
+          "frame": 961,
+          "order": 7
+        },
+        {
+          "src": "assets/results/10-lives/keyframes/frame_001016.jpg",
+          "frame": 1016,
+          "order": 8
+        }
+      ],
+      "outputs": {
+        "ours": "assets/results/10-lives/ours.png",
+        "sc": "assets/results/10-lives/sc.png"
+      },
+      "comparison": {
+        "iscp": "assets/results/10-lives/comparison/iscp.png",
+        "colla": "assets/results/10-lives/comparison/colla.png"
+      },
+      "paperLabel": "fig_comparison",
+      "keyframeLabel": "Keyframes shown in the paper"
+    },
+    {
+      "id": "luca",
+      "title": "Luca",
+      "category": "Animation",
+      "heading": "Friendship in motion.",
+      "story": "Two boys watch the lights across the water at dusk (01). By day they trade looks over a handmade board (02), cheer on a wooden deck (03), brace together on a scooter, one in a colander helmet (04–05), face a plank ramp over the sea (06) and fly off into the sky (07).",
+      "look": "Frame 01 comes from a trailer title card, so part of its caption text is visible in the top cell.",
+      "thumb": "assets/results/luca/thumb.png",
+      "keyframes": [
+        {
+          "src": "assets/results/luca/keyframes/01_frame_000300.jpg",
+          "frame": 300,
+          "order": 1
+        },
+        {
+          "src": "assets/results/luca/keyframes/02_frame_000305.jpg",
+          "frame": 305,
+          "order": 2
+        },
+        {
+          "src": "assets/results/luca/keyframes/03_frame_000540.jpg",
+          "frame": 540,
+          "order": 3
+        },
+        {
+          "src": "assets/results/luca/keyframes/04_frame_000562.jpg",
+          "frame": 562,
+          "order": 4
+        },
+        {
+          "src": "assets/results/luca/keyframes/05_frame_000567.jpg",
+          "frame": 567,
+          "order": 5
+        },
+        {
+          "src": "assets/results/luca/keyframes/06_frame_000672.jpg",
+          "frame": 672,
+          "order": 6
+        },
+        {
+          "src": "assets/results/luca/keyframes/07_frame_000697.jpg",
+          "frame": 697,
+          "order": 7
+        }
+      ],
+      "outputs": {
+        "ours": "assets/results/luca/ours.png",
+        "sc": "assets/results/luca/sc.png"
+      },
+      "comparison": {
+        "iscp": "assets/results/luca/comparison/iscp.png",
+        "colla": "assets/results/luca/comparison/colla.png"
+      },
+      "paperLabel": "fig_comparison",
+      "keyframeLabel": "Keyframes shown in the paper"
+    },
+    {
+      "id": "imaginary",
+      "title": "Imaginary",
+      "category": "Anime",
+      "heading": "A journey across imagined spaces.",
+      "story": "Earth is seen from a small moon (01). A figure streaks through teal currents (02–04), a star-shaped box rests on a table (05), two boys run past a car (06) and ride a flying car through the clouds (07–08). A blond boy looks up, startled (09); the last frame is a dim, cluttered room (10).",
+      "look": "The source is letterboxed, and the black bars are carried into the cells of the collage.",
+      "thumb": "assets/results/imaginary/thumb.png",
+      "keyframes": [
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000000.jpg",
+          "frame": 0,
+          "order": 1
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000155.jpg",
+          "frame": 155,
+          "order": 2
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000185.jpg",
+          "frame": 185,
+          "order": 3
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000200.jpg",
+          "frame": 200,
+          "order": 4
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000260.jpg",
+          "frame": 260,
+          "order": 5
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000276.jpg",
+          "frame": 276,
+          "order": 6
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000316.jpg",
+          "frame": 316,
+          "order": 7
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000321.jpg",
+          "frame": 321,
+          "order": 8
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000426.jpg",
+          "frame": 426,
+          "order": 9
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000454.jpg",
+          "frame": 454,
+          "order": 10
+        }
+      ],
+      "outputs": {
+        "ours": "assets/results/imaginary/ours.png",
+        "sc": "assets/results/imaginary/sc.png"
+      },
+      "comparison": {
+        "iscp": "assets/results/imaginary/comparison/iscp.png",
+        "colla": "assets/results/imaginary/comparison/colla.png"
+      },
+      "paperLabel": "fig_comparison",
+      "keyframeLabel": "Keyframes shown in the paper"
+    },
+    {
+      "id": "house-of-magic",
+      "title": "House of Magic",
+      "category": "Animation",
+      "heading": "From a window ledge to a wider world.",
+      "story": "An old magician holds an orange kitten (01). A purple shape sprawls on a staircase (02) and children look out of a window (03). The kitten edges along a high ledge (04–06), clings on in close-up (07), and the clip ends in a red-lit hall (08–09).",
+      "look": "Three ledge frames (04–06) differ only in the pose of the kitten. See how much of the ledge each cell keeps.",
+      "thumb": "assets/results/house-of-magic/thumb.png",
+      "keyframes": [
+        {
+          "src": "assets/results/house-of-magic/keyframes/frame_000956.jpg",
+          "frame": 956,
+          "order": 1
+        },
+        {
+          "src": "assets/results/house-of-magic/keyframes/frame_001876.jpg",
+          "frame": 1876,
+          "order": 2
+        },
+        {
+          "src": "assets/results/house-of-magic/keyframes/frame_001886.jpg",
+          "frame": 1886,
+          "order": 3
+        },
+        {
+          "src": "assets/results/house-of-magic/keyframes/frame_001896.jpg",
+          "frame": 1896,
+          "order": 4
+        },
+        {
+          "src": "assets/results/house-of-magic/keyframes/frame_001906.jpg",
+          "frame": 1906,
+          "order": 5
+        },
+        {
+          "src": "assets/results/house-of-magic/keyframes/frame_001911.jpg",
+          "frame": 1911,
+          "order": 6
+        },
+        {
+          "src": "assets/results/house-of-magic/keyframes/frame_001941.jpg",
+          "frame": 1941,
+          "order": 7
+        },
+        {
+          "src": "assets/results/house-of-magic/keyframes/frame_002004.jpg",
+          "frame": 2004,
+          "order": 8
+        },
+        {
+          "src": "assets/results/house-of-magic/keyframes/frame_002024.jpg",
+          "frame": 2024,
+          "order": 9
+        }
+      ],
+      "outputs": {
+        "ours": "assets/results/house-of-magic/ours.png",
+        "sc": "assets/results/house-of-magic/sc.png"
+      },
+      "comparison": {
+        "iscp": "assets/results/house-of-magic/comparison/iscp.png",
+        "colla": "assets/results/house-of-magic/comparison/colla.png"
+      },
+      "paperLabel": "fig_comparison",
+      "keyframeLabel": "Keyframes shown in the paper"
+    },
+    {
+      "id": "secret-life-of-pets",
+      "title": "The Secret Life of Pets",
+      "category": "Animation",
+      "heading": "Many characters, a shared canvas.",
+      "story": "A grey cat is fed in a kitchen (01–02) and a pug waits by a door (03–04). Pets crowd a living room around a television (05), a green bird flies at the camera (06), a roast chicken sits in an open fridge until the cat appears beside it (07–08), and an animal clings to an autumn tree outside the windows (09–10).",
+      "look": "Ten frames with a different animal in almost each one. Count how many you can still identify in the collage.",
+      "thumb": "assets/results/secret-life-of-pets/thumb.png",
+      "keyframes": [
+        {
+          "src": "assets/results/secret-life-of-pets/keyframes/frame_000852.jpg",
+          "frame": 852,
+          "order": 1
+        },
+        {
+          "src": "assets/results/secret-life-of-pets/keyframes/frame_000962.jpg",
+          "frame": 962,
+          "order": 2
+        },
+        {
+          "src": "assets/results/secret-life-of-pets/keyframes/frame_001042.jpg",
+          "frame": 1042,
+          "order": 3
+        },
+        {
+          "src": "assets/results/secret-life-of-pets/keyframes/frame_001052.jpg",
+          "frame": 1052,
+          "order": 4
+        },
+        {
+          "src": "assets/results/secret-life-of-pets/keyframes/frame_001252.jpg",
+          "frame": 1252,
+          "order": 5
+        },
+        {
+          "src": "assets/results/secret-life-of-pets/keyframes/frame_001522.jpg",
+          "frame": 1522,
+          "order": 6
+        },
+        {
+          "src": "assets/results/secret-life-of-pets/keyframes/frame_001637.jpg",
+          "frame": 1637,
+          "order": 7
+        },
+        {
+          "src": "assets/results/secret-life-of-pets/keyframes/frame_002007.jpg",
+          "frame": 2007,
+          "order": 8
+        },
+        {
+          "src": "assets/results/secret-life-of-pets/keyframes/frame_002282.jpg",
+          "frame": 2282,
+          "order": 9
+        },
+        {
+          "src": "assets/results/secret-life-of-pets/keyframes/frame_002362.jpg",
+          "frame": 2362,
+          "order": 10
+        }
+      ],
+      "outputs": {
+        "ours": "assets/results/secret-life-of-pets/ours.png",
+        "sc": "assets/results/secret-life-of-pets/sc.png"
+      },
+      "comparison": {
+        "iscp": "assets/results/secret-life-of-pets/comparison/iscp.png",
+        "colla": "assets/results/secret-life-of-pets/comparison/colla.png"
+      },
+      "paperLabel": "fig_comparison",
+      "keyframeLabel": "Keyframes shown in the paper"
+    },
+    {
+      "id": "cat",
+      "title": "Cat",
+      "category": "Animation",
+      "heading": "Small reactions carry the scene.",
+      "story": "An orange cat in a hat is offered a blue bottle (01–02) and a grey-haired woman leans in (03). The cat peers over a ledge (04), tumbles through the dark (05), and a small figure leaps against the sky (06). It ends beside a black cat in a yellow hood (07–09).",
+      "look": "The source is letterboxed, and the black bars are carried into several cells of the collage.",
+      "thumb": "assets/results/cat/thumb.png",
+      "keyframes": [
+        {
+          "src": "assets/results/cat/keyframes/frame_000667.jpg",
+          "frame": 667,
+          "order": 1
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_000677.jpg",
+          "frame": 677,
+          "order": 2
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_000682.jpg",
+          "frame": 682,
+          "order": 3
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_000787.jpg",
+          "frame": 787,
+          "order": 4
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_000864.jpg",
+          "frame": 864,
+          "order": 5
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_000894.jpg",
+          "frame": 894,
+          "order": 6
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_000949.jpg",
+          "frame": 949,
+          "order": 7
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_001131.jpg",
+          "frame": 1131,
+          "order": 8
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_001196.jpg",
+          "frame": 1196,
+          "order": 9
+        }
+      ],
+      "outputs": {
+        "ours": "assets/results/cat/ours.png",
+        "sc": "assets/results/cat/sc.png"
+      },
+      "comparison": {
+        "iscp": "assets/results/cat/comparison/iscp.png",
+        "colla": "assets/results/cat/comparison/colla.png"
+      },
+      "paperLabel": "fig_comparison",
+      "keyframeLabel": "Keyframes shown in the paper"
+    },
+    {
+      "id": "dog-tale",
+      "title": "Dog Tale",
+      "category": "Live action",
+      "heading": "A familiar character through a sequence.",
+      "story": "A small dog stands in a hallway (01) and sits on a step (02). A man on a sofa works on a purple garment (03). The dog then sits wearing a purple sweater (04–06) and ends up lying on a blanket (07).",
+      "look": "Live action. The source frames carry burned-in subtitles (03, 05, 07), which remain readable in some cells.",
+      "thumb": "assets/results/dog-tale/thumb.png",
+      "keyframes": [
+        {
+          "src": "assets/results/dog-tale/keyframes/frame_000650.jpg",
+          "frame": 650,
+          "order": 1
+        },
+        {
+          "src": "assets/results/dog-tale/keyframes/frame_001050.jpg",
+          "frame": 1050,
+          "order": 2
+        },
+        {
+          "src": "assets/results/dog-tale/keyframes/frame_002944.jpg",
+          "frame": 2944,
+          "order": 3
+        },
+        {
+          "src": "assets/results/dog-tale/keyframes/frame_003050.jpg",
+          "frame": 3050,
+          "order": 4
+        },
+        {
+          "src": "assets/results/dog-tale/keyframes/frame_003099.jpg",
+          "frame": 3099,
+          "order": 5
+        },
+        {
+          "src": "assets/results/dog-tale/keyframes/frame_003110.jpg",
+          "frame": 3110,
+          "order": 6
+        },
+        {
+          "src": "assets/results/dog-tale/keyframes/frame_003289.jpg",
+          "frame": 3289,
+          "order": 7
+        }
+      ],
+      "outputs": {
+        "ours": "assets/results/dog-tale/ours.png",
+        "sc": "assets/results/dog-tale/sc.png"
+      },
+      "comparison": {
+        "iscp": "assets/results/dog-tale/comparison/iscp.png",
+        "colla": "assets/results/dog-tale/comparison/colla.png"
+      },
+      "paperLabel": "fig_comparison",
+      "keyframeLabel": "Keyframes shown in the paper"
+    },
+    {
+      "id": "our-days",
+      "title": "Our Days",
+      "category": "Live action",
+      "heading": "Everyday moments, held together.",
+      "story": "A grey rabbit rests in its hay tray (01), sits on a wooden hut (02) and explores its pen (03–04). A person kneels on a green rug and feeds it by hand (05–07). The last frame shows the rabbit alone on the rug (08).",
+      "look": "Live action. The rabbit is small in the wide shots (03, 04, 08). Check whether it stays visible in those cells.",
+      "thumb": "assets/results/our-days/thumb.png",
+      "keyframes": [
+        {
+          "src": "assets/results/our-days/keyframes/frame_002586.jpg",
+          "frame": 2586,
+          "order": 1
+        },
+        {
+          "src": "assets/results/our-days/keyframes/frame_002697.jpg",
+          "frame": 2697,
+          "order": 2
+        },
+        {
+          "src": "assets/results/our-days/keyframes/frame_002865.jpg",
+          "frame": 2865,
+          "order": 3
+        },
+        {
+          "src": "assets/results/our-days/keyframes/frame_003286.jpg",
+          "frame": 3286,
+          "order": 4
+        },
+        {
+          "src": "assets/results/our-days/keyframes/frame_003550.jpg",
+          "frame": 3550,
+          "order": 5
+        },
+        {
+          "src": "assets/results/our-days/keyframes/frame_003640.jpg",
+          "frame": 3640,
+          "order": 6
+        },
+        {
+          "src": "assets/results/our-days/keyframes/frame_004135.jpg",
+          "frame": 4135,
+          "order": 7
+        },
+        {
+          "src": "assets/results/our-days/keyframes/frame_004308.jpg",
+          "frame": 4308,
+          "order": 8
+        }
+      ],
+      "outputs": {
+        "ours": "assets/results/our-days/ours.png",
+        "sc": "assets/results/our-days/sc.png"
+      },
+      "comparison": {
+        "iscp": "assets/results/our-days/comparison/iscp.png",
+        "colla": "assets/results/our-days/comparison/colla.png"
+      },
+      "paperLabel": "fig_comparison",
+      "keyframeLabel": "Keyframes shown in the paper"
+    }
+  ],
+  "more": [
+    {
+      "id": "inside-out",
+      "title": "Inside Out 2",
+      "keyframes": [
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000085.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000085.thumb.webp",
+          "order": 1
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000100.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000100.thumb.webp",
+          "order": 2
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000300.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000300.thumb.webp",
+          "order": 3
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000375.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000375.thumb.webp",
+          "order": 4
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000385.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000385.thumb.webp",
+          "order": 5
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000445.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000445.thumb.webp",
+          "order": 6
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000460.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000460.thumb.webp",
+          "order": 7
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000480.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000480.thumb.webp",
+          "order": 8
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000555.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000555.thumb.webp",
+          "order": 9
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000590.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000590.thumb.webp",
+          "order": 10
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000761.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000761.thumb.webp",
+          "order": 11
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000776.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000776.thumb.webp",
+          "order": 12
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000781.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000781.thumb.webp",
+          "order": 13
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000821.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000821.thumb.webp",
+          "order": 14
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_000861.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_000861.thumb.webp",
+          "order": 15
+        },
+        {
+          "src": "assets/results/more/inside-out/keyframes/frame_001039.jpg",
+          "thumb": "assets/results/more/inside-out/keyframes/frame_001039.thumb.webp",
+          "order": 16
+        }
+      ],
+      "outputs": {
+        "ours": {
+          "src": "assets/results/more/inside-out/ours.png",
+          "view": "assets/results/more/inside-out/ours.view.png"
+        },
+        "iscp": {
+          "src": "assets/results/more/inside-out/iscp.png",
+          "view": "assets/results/more/inside-out/iscp.view.png"
+        },
+        "colla": {
+          "src": "assets/results/more/inside-out/colla.png",
+          "view": "assets/results/more/inside-out/colla.view.png"
+        },
+        "sc": {
+          "src": "assets/results/more/inside-out/sc.png",
+          "view": "assets/results/more/inside-out/sc.view.png"
+        }
+      }
+    },
+    {
+      "id": "kpop-demon-hunters",
+      "title": "KPop Demon Hunters",
+      "keyframes": [
+        {
+          "src": "assets/results/more/kpop-demon-hunters/keyframes/frame_000025.jpg",
+          "thumb": "assets/results/more/kpop-demon-hunters/keyframes/frame_000025.thumb.webp",
+          "order": 1
+        },
+        {
+          "src": "assets/results/more/kpop-demon-hunters/keyframes/frame_000030.jpg",
+          "thumb": "assets/results/more/kpop-demon-hunters/keyframes/frame_000030.thumb.webp",
+          "order": 2
+        },
+        {
+          "src": "assets/results/more/kpop-demon-hunters/keyframes/frame_000035.jpg",
+          "thumb": "assets/results/more/kpop-demon-hunters/keyframes/frame_000035.thumb.webp",
+          "order": 3
+        },
+        {
+          "src": "assets/results/more/kpop-demon-hunters/keyframes/frame_000040.jpg",
+          "thumb": "assets/results/more/kpop-demon-hunters/keyframes/frame_000040.thumb.webp",
+          "order": 4
+        },
+        {
+          "src": "assets/results/more/kpop-demon-hunters/keyframes/frame_000045.jpg",
+          "thumb": "assets/results/more/kpop-demon-hunters/keyframes/frame_000045.thumb.webp",
+          "order": 5
+        },
+        {
+          "src": "assets/results/more/kpop-demon-hunters/keyframes/frame_000050.jpg",
+          "thumb": "assets/results/more/kpop-demon-hunters/keyframes/frame_000050.thumb.webp",
+          "order": 6
+        },
+        {
+          "src": "assets/results/more/kpop-demon-hunters/keyframes/frame_000070.jpg",
+          "thumb": "assets/results/more/kpop-demon-hunters/keyframes/frame_000070.thumb.webp",
+          "order": 7
+        },
+        {
+          "src": "assets/results/more/kpop-demon-hunters/keyframes/frame_000540.jpg",
+          "thumb": "assets/results/more/kpop-demon-hunters/keyframes/frame_000540.thumb.webp",
+          "order": 8
+        },
+        {
+          "src": "assets/results/more/kpop-demon-hunters/keyframes/frame_000695.jpg",
+          "thumb": "assets/results/more/kpop-demon-hunters/keyframes/frame_000695.thumb.webp",
+          "order": 9
+        },
+        {
+          "src": "assets/results/more/kpop-demon-hunters/keyframes/frame_000700.jpg",
+          "thumb": "assets/results/more/kpop-demon-hunters/keyframes/frame_000700.thumb.webp",
+          "order": 10
+        },
+        {
+          "src": "assets/results/more/kpop-demon-hunters/keyframes/frame_000705.jpg",
+          "thumb": "assets/results/more/kpop-demon-hunters/keyframes/frame_000705.thumb.webp",
+          "order": 11
+        },
+        {
+          "src": "assets/results/more/kpop-demon-hunters/keyframes/frame_000710.jpg",
+          "thumb": "assets/results/more/kpop-demon-hunters/keyframes/frame_000710.thumb.webp",
+          "order": 12
+        },
+        {
+          "src": "assets/results/more/kpop-demon-hunters/keyframes/frame_000715.jpg",
+          "thumb": "assets/results/more/kpop-demon-hunters/keyframes/frame_000715.thumb.webp",
+          "order": 13
+        }
+      ],
+      "outputs": {
+        "ours": {
+          "src": "assets/results/more/kpop-demon-hunters/ours.png",
+          "view": "assets/results/more/kpop-demon-hunters/ours.view.png"
+        },
+        "iscp": {
+          "src": "assets/results/more/kpop-demon-hunters/iscp.png",
+          "view": "assets/results/more/kpop-demon-hunters/iscp.view.png"
+        },
+        "colla": {
+          "src": "assets/results/more/kpop-demon-hunters/colla.png",
+          "view": "assets/results/more/kpop-demon-hunters/colla.view.png"
+        },
+        "sc": {
+          "src": "assets/results/more/kpop-demon-hunters/sc.png",
+          "view": "assets/results/more/kpop-demon-hunters/sc.view.png"
+        }
+      }
+    },
+    {
+      "id": "nobody",
+      "title": "Nobody",
+      "keyframes": [
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000090.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000090.thumb.webp",
+          "order": 1
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000160.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000160.thumb.webp",
+          "order": 2
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000337.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000337.thumb.webp",
+          "order": 3
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000482.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000482.thumb.webp",
+          "order": 4
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000487.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000487.thumb.webp",
+          "order": 5
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000552.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000552.thumb.webp",
+          "order": 6
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000602.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000602.thumb.webp",
+          "order": 7
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000607.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000607.thumb.webp",
+          "order": 8
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000747.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000747.thumb.webp",
+          "order": 9
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000752.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000752.thumb.webp",
+          "order": 10
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000762.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000762.thumb.webp",
+          "order": 11
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000818.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000818.thumb.webp",
+          "order": 12
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000848.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000848.thumb.webp",
+          "order": 13
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000948.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000948.thumb.webp",
+          "order": 14
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000958.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000958.thumb.webp",
+          "order": 15
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_000963.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_000963.thumb.webp",
+          "order": 16
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_001008.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_001008.thumb.webp",
+          "order": 17
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_001018.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_001018.thumb.webp",
+          "order": 18
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_001023.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_001023.thumb.webp",
+          "order": 19
+        },
+        {
+          "src": "assets/results/more/nobody/keyframes/frame_001213.jpg",
+          "thumb": "assets/results/more/nobody/keyframes/frame_001213.thumb.webp",
+          "order": 20
+        }
+      ],
+      "outputs": {
+        "ours": {
+          "src": "assets/results/more/nobody/ours.png",
+          "view": "assets/results/more/nobody/ours.view.png"
+        },
+        "iscp": {
+          "src": "assets/results/more/nobody/iscp.png",
+          "view": "assets/results/more/nobody/iscp.view.png"
+        },
+        "colla": {
+          "src": "assets/results/more/nobody/colla.png",
+          "view": "assets/results/more/nobody/colla.view.png"
+        },
+        "sc": {
+          "src": "assets/results/more/nobody/sc.png",
+          "view": "assets/results/more/nobody/sc.view.png"
+        }
+      }
+    },
+    {
+      "id": "stranger-things",
+      "title": "Stranger Things",
+      "keyframes": [
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000000.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000000.thumb.webp",
+          "order": 1
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000110.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000110.thumb.webp",
+          "order": 2
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000155.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000155.thumb.webp",
+          "order": 3
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000339.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000339.thumb.webp",
+          "order": 4
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000379.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000379.thumb.webp",
+          "order": 5
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000389.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000389.thumb.webp",
+          "order": 6
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000409.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000409.thumb.webp",
+          "order": 7
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000438.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000438.thumb.webp",
+          "order": 8
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000443.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000443.thumb.webp",
+          "order": 9
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000453.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000453.thumb.webp",
+          "order": 10
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000458.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000458.thumb.webp",
+          "order": 11
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000463.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000463.thumb.webp",
+          "order": 12
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000468.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000468.thumb.webp",
+          "order": 13
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000493.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000493.thumb.webp",
+          "order": 14
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000768.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000768.thumb.webp",
+          "order": 15
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000773.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000773.thumb.webp",
+          "order": 16
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000783.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000783.thumb.webp",
+          "order": 17
+        },
+        {
+          "src": "assets/results/more/stranger-things/keyframes/frame_000798.jpg",
+          "thumb": "assets/results/more/stranger-things/keyframes/frame_000798.thumb.webp",
+          "order": 18
+        }
+      ],
+      "outputs": {
+        "ours": {
+          "src": "assets/results/more/stranger-things/ours.png",
+          "view": "assets/results/more/stranger-things/ours.view.png"
+        },
+        "iscp": {
+          "src": "assets/results/more/stranger-things/iscp.png",
+          "view": "assets/results/more/stranger-things/iscp.view.png"
+        },
+        "colla": {
+          "src": "assets/results/more/stranger-things/colla.png",
+          "view": "assets/results/more/stranger-things/colla.view.png"
+        },
+        "sc": {
+          "src": "assets/results/more/stranger-things/sc.png",
+          "view": "assets/results/more/stranger-things/sc.view.png"
+        }
+      }
+    },
+    {
+      "id": "umaru",
+      "title": "Himouto! Umaru-chan",
+      "keyframes": [
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000000.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000000.thumb.webp",
+          "order": 1
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000120.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000120.thumb.webp",
+          "order": 2
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000130.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000130.thumb.webp",
+          "order": 3
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000175.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000175.thumb.webp",
+          "order": 4
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000300.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000300.thumb.webp",
+          "order": 5
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000310.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000310.thumb.webp",
+          "order": 6
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000315.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000315.thumb.webp",
+          "order": 7
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000344.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000344.thumb.webp",
+          "order": 8
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000354.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000354.thumb.webp",
+          "order": 9
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000414.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000414.thumb.webp",
+          "order": 10
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000448.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000448.thumb.webp",
+          "order": 11
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000453.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000453.thumb.webp",
+          "order": 12
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000458.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000458.thumb.webp",
+          "order": 13
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000548.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000548.thumb.webp",
+          "order": 14
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000588.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000588.thumb.webp",
+          "order": 15
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000593.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000593.thumb.webp",
+          "order": 16
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000598.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000598.thumb.webp",
+          "order": 17
+        },
+        {
+          "src": "assets/results/more/umaru/keyframes/frame_000603.jpg",
+          "thumb": "assets/results/more/umaru/keyframes/frame_000603.thumb.webp",
+          "order": 18
+        }
+      ],
+      "outputs": {
+        "ours": {
+          "src": "assets/results/more/umaru/ours.png",
+          "view": "assets/results/more/umaru/ours.view.png"
+        },
+        "iscp": {
+          "src": "assets/results/more/umaru/iscp.png",
+          "view": "assets/results/more/umaru/iscp.view.png"
+        },
+        "colla": {
+          "src": "assets/results/more/umaru/colla.png",
+          "view": "assets/results/more/umaru/colla.view.png"
+        },
+        "sc": {
+          "src": "assets/results/more/umaru/sc.png",
+          "view": "assets/results/more/umaru/sc.view.png"
+        }
+      }
+    },
+    {
+      "id": "swapped",
+      "title": "Swapped",
+      "keyframes": [],
+      "outputs": {
+        "ours": {
+          "src": "assets/results/more/swapped/ours.png",
+          "view": "assets/results/more/swapped/ours.view.png"
+        },
+        "iscp": {
+          "src": "assets/results/more/swapped/iscp.png",
+          "view": "assets/results/more/swapped/iscp.view.png"
+        },
+        "colla": {
+          "src": "assets/results/more/swapped/colla.png",
+          "view": "assets/results/more/swapped/colla.view.png"
+        },
+        "sc": {
+          "src": "assets/results/more/swapped/sc.png",
+          "view": "assets/results/more/swapped/sc.view.png"
+        }
+      }
+    },
+    {
+      "id": "angry-bird",
+      "title": "Angry Birds",
+      "keyframes": [],
+      "outputs": {
+        "ours": {
+          "src": "assets/results/more/angry-bird/ours.png",
+          "view": "assets/results/more/angry-bird/ours.view.png"
+        },
+        "iscp": {
+          "src": "assets/results/more/angry-bird/iscp.png",
+          "view": "assets/results/more/angry-bird/iscp.view.png"
+        },
+        "colla": {
+          "src": "assets/results/more/angry-bird/colla.png",
+          "view": "assets/results/more/angry-bird/colla.view.png"
+        },
+        "sc": {
+          "src": "assets/results/more/angry-bird/sc.png",
+          "view": "assets/results/more/angry-bird/sc.view.png"
+        }
+      }
+    },
+    {
+      "id": "feast",
+      "title": "Feast",
+      "keyframes": [],
+      "outputs": {
+        "ours": {
+          "src": "assets/results/more/feast/ours.png",
+          "view": "assets/results/more/feast/ours.view.png"
+        },
+        "iscp": {
+          "src": "assets/results/more/feast/iscp.png",
+          "view": "assets/results/more/feast/iscp.view.png"
+        },
+        "colla": {
+          "src": "assets/results/more/feast/colla.png",
+          "view": "assets/results/more/feast/colla.view.png"
+        },
+        "sc": {
+          "src": "assets/results/more/feast/sc.png",
+          "view": "assets/results/more/feast/sc.view.png"
+        }
+      }
+    },
+    {
+      "id": "princes",
+      "title": "Princes",
+      "keyframes": [],
+      "outputs": {
+        "ours": {
+          "src": "assets/results/more/princes/ours.png",
+          "view": "assets/results/more/princes/ours.view.png"
+        },
+        "iscp": {
+          "src": "assets/results/more/princes/iscp.png",
+          "view": "assets/results/more/princes/iscp.view.png"
+        },
+        "colla": {
+          "src": "assets/results/more/princes/colla.png",
+          "view": "assets/results/more/princes/colla.view.png"
+        },
+        "sc": {
+          "src": "assets/results/more/princes/sc.png",
+          "view": "assets/results/more/princes/sc.view.png"
+        }
+      }
+    },
+    {
+      "id": "sparkshort",
+      "title": "SparkShort",
+      "keyframes": [],
+      "outputs": {
+        "ours": {
+          "src": "assets/results/more/sparkshort/ours.png",
+          "view": "assets/results/more/sparkshort/ours.view.png"
+        },
+        "iscp": {
+          "src": "assets/results/more/sparkshort/iscp.png",
+          "view": "assets/results/more/sparkshort/iscp.view.png"
+        },
+        "colla": {
+          "src": "assets/results/more/sparkshort/colla.png",
+          "view": "assets/results/more/sparkshort/colla.view.png"
+        },
+        "sc": {
+          "src": "assets/results/more/sparkshort/sc.png",
+          "view": "assets/results/more/sparkshort/sc.view.png"
+        }
+      }
+    }
+  ]
+}
