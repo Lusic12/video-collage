@@ -5,6 +5,8 @@ const path = require('node:path');
 const { parseRoute, resultHash, withRefs, wordCount } = require('../main.js');
 const { results, more } = require('../assets/results.json');
 const root = path.resolve(__dirname, '..');
+const paper = [path.join(root, 'AI4Love/AI4Love'), path.resolve(root, '../AI4Love')]
+  .find((candidate) => fs.existsSync(path.join(candidate, 'experiment.tex')));
 
 test('every example and view round-trips through a stable paper link', () => {
   for (const item of results) for (const view of ['collage','comparison']) {
@@ -18,9 +20,9 @@ test('keyframe links already printed in the paper open the story view', () => {
 });
 test('unknown links fall back visibly without losing a valid example', () => {
   assert.deepEqual(parseRoute('#results/garfield/unknown', results), { id:'garfield', view:'collage', invalid:true });
-  assert.deepEqual(parseRoute('#results/unknown/comparison', results), { id:'your-name', view:'comparison', invalid:true });
+  assert.deepEqual(parseRoute('#results/unknown/comparison', results), { id:'10-lives', view:'comparison', invalid:true });
   assert.equal(parseRoute('#comparison', results).view, 'comparison');
-  assert.equal(parseRoute('', results).id, 'your-name');
+  assert.equal(parseRoute('', results).id, '10-lives');
   assert.equal(parseRoute('#results/garfield', results).view, 'collage');
 });
 test('every story cites only keyframes that exist, in order', () => {
@@ -42,20 +44,22 @@ test('the opening example repeats the published Garfield story', () => {
   assert.ok(html.includes(`${wordCount(item.story)} WORDS`));
   assert.equal((html.match(/class="key-frames"[\s\S]*?<\/ol>/)[0].match(/<li>/g) || []).length, item.keyframes.length);
 });
-test('all exported outputs and keyframes match paper assets byte for byte', { skip: !fs.existsSync(path.join(root,'AI4Love/AI4Love')) && 'paper sources removed' }, () => {
-  const names = { 'your-name':'Your_name', '10-lives':'10_Lives', 'cat':'Cat', 'garfield':'Garfield', 'house-of-magic':'House_of_Magic', 'imaginary':'Imaginary', 'secret-life-of-pets':'Secret_Life_Of_Pets', 'dog-tale':'Dog_tale', 'our-days':'Our_Days', 'luca':'Luca' };
+test('all exported outputs and keyframes match paper assets byte for byte', { skip: !paper && 'paper sources removed' }, () => {
+  const names = { 'your-name':'Your_name', '10-lives':'10_Lives', 'cat':'Cat', 'garfield':'Garfield', 'house-of-magic':'House_of_Magic', 'imaginary':'Imaginary', 'secret-life-of-pets':'Secret_Life_Of_Pets', 'dog-tale':'Dog_tale', 'our-days':'Our_Days', 'luca':'Luca', 'chococat':'Chococat' };
   assert.equal(new Set(results.map(x => x.id)).size, results.length);
+  assert.equal(results.length, 11);
   for (const item of results) {
     assert.deepEqual(Object.keys(item.comparison), ['iscp','colla'], item.id);
     for (const [method, file] of Object.entries({ ...item.outputs, ...item.comparison })) {
-      const source = path.join(root,'AI4Love/AI4Love/images/comparison/final',method,`${names[item.id]}.png`);
+      const source = path.join(paper,'images/comparison/final',method,`${names[item.id]}.png`);
       assert.ok(fs.readFileSync(path.join(root,file)).equals(fs.readFileSync(source)),file);
     }
     for (const frame of item.keyframes) {
-      const source = path.join(root,'AI4Love/AI4Love/images/method/KEYFRAME_FILTER',names[item.id],path.basename(frame.src));
+      const source = path.join(paper,'images/method/KEYFRAME_FILTER',names[item.id],path.basename(frame.src));
       assert.ok(fs.readFileSync(path.join(root,frame.src)).equals(fs.readFileSync(source)),frame.src);
     }
   }
+  assert.ok(fs.readFileSync(path.join(root,'assets/results/framework.jpg')).equals(fs.readFileSync(path.join(paper,'images/method/framework.jpg'))));
 });
 test('extra examples carry all four methods and only files that will be published', () => {
   const ids = new Set(results.map((x) => x.id));

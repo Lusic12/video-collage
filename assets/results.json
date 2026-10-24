@@ -1,123 +1,6 @@
 {
   "results": [
     {
-      "id": "your-name",
-      "title": "Your Name",
-      "category": "Anime",
-      "heading": "Two lives, one composition.",
-      "story": "A girl stands apart in a crowd (01). She and a boy meet back to back (02), and a red cord loops between them (03–04), then stretches thin as they are pulled apart (05–06). A boy stands in a crowd of his own (07) and, last, on a city street (08).",
-      "look": "Four of the eight frames show the red cord (03–06). Find where they sit inside the heart.",
-      "thumb": "assets/results/your-name/thumb.png",
-      "keyframes": [
-        {
-          "src": "assets/results/your-name/keyframes/frame_000130.jpg",
-          "frame": 130,
-          "order": 1
-        },
-        {
-          "src": "assets/results/your-name/keyframes/frame_000471.jpg",
-          "frame": 471,
-          "order": 2
-        },
-        {
-          "src": "assets/results/your-name/keyframes/frame_000476.jpg",
-          "frame": 476,
-          "order": 3
-        },
-        {
-          "src": "assets/results/your-name/keyframes/frame_000481.jpg",
-          "frame": 481,
-          "order": 4
-        },
-        {
-          "src": "assets/results/your-name/keyframes/frame_000751.jpg",
-          "frame": 751,
-          "order": 5
-        },
-        {
-          "src": "assets/results/your-name/keyframes/frame_000771.jpg",
-          "frame": 771,
-          "order": 6
-        },
-        {
-          "src": "assets/results/your-name/keyframes/frame_000941.jpg",
-          "frame": 941,
-          "order": 7
-        },
-        {
-          "src": "assets/results/your-name/keyframes/frame_001226.jpg",
-          "frame": 1226,
-          "order": 8
-        }
-      ],
-      "outputs": {
-        "ours": "assets/results/your-name/ours.png",
-        "sc": "assets/results/your-name/sc.png"
-      },
-      "comparison": {
-        "iscp": "assets/results/your-name/comparison/iscp.png",
-        "colla": "assets/results/your-name/comparison/colla.png"
-      },
-      "paperLabel": "fig_comparison",
-      "keyframeLabel": "Keyframes shown in the paper"
-    },
-    {
-      "id": "garfield",
-      "title": "Garfield",
-      "category": "Animation",
-      "heading": "An encounter, told through expressions.",
-      "story": "Late at night, a tiny orange kitten sits alone on a box, as if someone has left it behind. Its eyes are wide and searching, and for a moment it lowers them, giving up (01–02). Then a man notices it and kneels down on the empty street (03). The kitten looks up at him, pleading, as he cups it in both hands (04). He lifts it toward his face (05); it stares back, still unsure whether to trust him (06). He holds it close, and it is no longer alone (07).",
-      "look": "Close-ups of the kitten alternate with shots of the man. The near-identical close-ups (01, 02, 04, 06) each keep their own cell.",
-      "thumb": "assets/results/garfield/thumb.png",
-      "keyframes": [
-        {
-          "src": "assets/results/garfield/keyframes/frame_000005.jpg",
-          "frame": 5,
-          "order": 1
-        },
-        {
-          "src": "assets/results/garfield/keyframes/frame_000256.jpg",
-          "frame": 256,
-          "order": 2
-        },
-        {
-          "src": "assets/results/garfield/keyframes/frame_000366.jpg",
-          "frame": 366,
-          "order": 3
-        },
-        {
-          "src": "assets/results/garfield/keyframes/frame_000856.jpg",
-          "frame": 856,
-          "order": 4
-        },
-        {
-          "src": "assets/results/garfield/keyframes/frame_001006.jpg",
-          "frame": 1006,
-          "order": 5
-        },
-        {
-          "src": "assets/results/garfield/keyframes/frame_001078.jpg",
-          "frame": 1078,
-          "order": 6
-        },
-        {
-          "src": "assets/results/garfield/keyframes/frame_001180.jpg",
-          "frame": 1180,
-          "order": 7
-        }
-      ],
-      "outputs": {
-        "ours": "assets/results/garfield/ours.png",
-        "sc": "assets/results/garfield/sc.png"
-      },
-      "comparison": {
-        "iscp": "assets/results/garfield/comparison/iscp.png",
-        "colla": "assets/results/garfield/comparison/colla.png"
-      },
-      "paperLabel": "fig_comparison",
-      "keyframeLabel": "Keyframes shown in the paper"
-    },
-    {
       "id": "10-lives",
       "title": "10 Lives",
       "category": "Animation",
@@ -235,72 +118,108 @@
       "keyframeLabel": "Keyframes shown in the paper"
     },
     {
-      "id": "imaginary",
-      "title": "Imaginary",
-      "category": "Anime",
-      "heading": "A journey across imagined spaces.",
-      "story": "Earth is seen from a small moon (01). A figure streaks through teal currents (02–04), a star-shaped box rests on a table (05), two boys run past a car (06) and ride a flying car through the clouds (07–08). A blond boy looks up, startled (09); the last frame is a dim, cluttered room (10).",
-      "look": "The source is letterboxed, and the black bars are carried into the cells of the collage.",
-      "thumb": "assets/results/imaginary/thumb.png",
+      "id": "chococat",
+      "title": "Chococat",
+      "category": "Animation",
+      "heading": "A small cast, one bright sequence.",
+      "story": "Chococat stands between friends in a garden as they hold an orange cord (01). Against a purple backdrop, the group shifts and another character joins them (02). The scene moves outdoors again, bringing Chococat and its friends together (03). A close-up isolates Chococat’s wide eyes (04). Hello Kitty and Chococat appear side by side (05), then the orange cord stretches between the group once more (06).",
+      "look": "The clip alternates group shots with close-ups. Follow how the orange cord connects the opening and closing moments.",
+      "thumb": "assets/results/chococat/thumb.png",
       "keyframes": [
         {
-          "src": "assets/results/imaginary/keyframes/frame_000000.jpg",
-          "frame": 0,
+          "src": "assets/results/chococat/keyframes/frame_000265.jpg",
+          "frame": 265,
           "order": 1
         },
         {
-          "src": "assets/results/imaginary/keyframes/frame_000155.jpg",
-          "frame": 155,
+          "src": "assets/results/chococat/keyframes/frame_000348.jpg",
+          "frame": 348,
           "order": 2
         },
         {
-          "src": "assets/results/imaginary/keyframes/frame_000185.jpg",
-          "frame": 185,
+          "src": "assets/results/chococat/keyframes/frame_000419.jpg",
+          "frame": 419,
           "order": 3
         },
         {
-          "src": "assets/results/imaginary/keyframes/frame_000200.jpg",
-          "frame": 200,
+          "src": "assets/results/chococat/keyframes/frame_000564.jpg",
+          "frame": 564,
           "order": 4
         },
         {
-          "src": "assets/results/imaginary/keyframes/frame_000260.jpg",
-          "frame": 260,
+          "src": "assets/results/chococat/keyframes/frame_000599.jpg",
+          "frame": 599,
           "order": 5
         },
         {
-          "src": "assets/results/imaginary/keyframes/frame_000276.jpg",
-          "frame": 276,
+          "src": "assets/results/chococat/keyframes/frame_000697.jpg",
+          "frame": 697,
           "order": 6
-        },
-        {
-          "src": "assets/results/imaginary/keyframes/frame_000316.jpg",
-          "frame": 316,
-          "order": 7
-        },
-        {
-          "src": "assets/results/imaginary/keyframes/frame_000321.jpg",
-          "frame": 321,
-          "order": 8
-        },
-        {
-          "src": "assets/results/imaginary/keyframes/frame_000426.jpg",
-          "frame": 426,
-          "order": 9
-        },
-        {
-          "src": "assets/results/imaginary/keyframes/frame_000454.jpg",
-          "frame": 454,
-          "order": 10
         }
       ],
       "outputs": {
-        "ours": "assets/results/imaginary/ours.png",
-        "sc": "assets/results/imaginary/sc.png"
+        "ours": "assets/results/chococat/ours.png",
+        "sc": "assets/results/chococat/sc.png"
       },
       "comparison": {
-        "iscp": "assets/results/imaginary/comparison/iscp.png",
-        "colla": "assets/results/imaginary/comparison/colla.png"
+        "iscp": "assets/results/chococat/comparison/iscp.png",
+        "colla": "assets/results/chococat/comparison/colla.png"
+      },
+      "paperLabel": "fig_comparison",
+      "keyframeLabel": "Keyframes shown in the paper"
+    },
+    {
+      "id": "garfield",
+      "title": "Garfield",
+      "category": "Animation",
+      "heading": "An encounter, told through expressions.",
+      "story": "Late at night, a tiny orange kitten sits alone on a box, as if someone has left it behind. Its eyes are wide and searching, and for a moment it lowers them, giving up (01–02). Then a man notices it and kneels down on the empty street (03). The kitten looks up at him, pleading, as he cups it in both hands (04). He lifts it toward his face (05); it stares back, still unsure whether to trust him (06). He holds it close, and it is no longer alone (07).",
+      "look": "Close-ups of the kitten alternate with shots of the man. The near-identical close-ups (01, 02, 04, 06) each keep their own cell.",
+      "thumb": "assets/results/garfield/thumb.png",
+      "keyframes": [
+        {
+          "src": "assets/results/garfield/keyframes/frame_000005.jpg",
+          "frame": 5,
+          "order": 1
+        },
+        {
+          "src": "assets/results/garfield/keyframes/frame_000256.jpg",
+          "frame": 256,
+          "order": 2
+        },
+        {
+          "src": "assets/results/garfield/keyframes/frame_000366.jpg",
+          "frame": 366,
+          "order": 3
+        },
+        {
+          "src": "assets/results/garfield/keyframes/frame_000856.jpg",
+          "frame": 856,
+          "order": 4
+        },
+        {
+          "src": "assets/results/garfield/keyframes/frame_001006.jpg",
+          "frame": 1006,
+          "order": 5
+        },
+        {
+          "src": "assets/results/garfield/keyframes/frame_001078.jpg",
+          "frame": 1078,
+          "order": 6
+        },
+        {
+          "src": "assets/results/garfield/keyframes/frame_001180.jpg",
+          "frame": 1180,
+          "order": 7
+        }
+      ],
+      "outputs": {
+        "ours": "assets/results/garfield/ours.png",
+        "sc": "assets/results/garfield/sc.png"
+      },
+      "comparison": {
+        "iscp": "assets/results/garfield/comparison/iscp.png",
+        "colla": "assets/results/garfield/comparison/colla.png"
       },
       "paperLabel": "fig_comparison",
       "keyframeLabel": "Keyframes shown in the paper"
@@ -367,6 +286,143 @@
       "comparison": {
         "iscp": "assets/results/house-of-magic/comparison/iscp.png",
         "colla": "assets/results/house-of-magic/comparison/colla.png"
+      },
+      "paperLabel": "fig_comparison",
+      "keyframeLabel": "Keyframes shown in the paper"
+    },
+    {
+      "id": "cat",
+      "title": "Cat",
+      "category": "Animation",
+      "heading": "Small reactions carry the scene.",
+      "story": "An orange cat in a hat is offered a blue bottle (01–02) and a grey-haired woman leans in (03). The cat peers over a ledge (04), tumbles through the dark (05), and a small figure leaps against the sky (06). It ends beside a black cat in a yellow hood (07–09).",
+      "look": "The source is letterboxed, and the black bars are carried into several cells of the collage.",
+      "thumb": "assets/results/cat/thumb.png",
+      "keyframes": [
+        {
+          "src": "assets/results/cat/keyframes/frame_000667.jpg",
+          "frame": 667,
+          "order": 1
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_000677.jpg",
+          "frame": 677,
+          "order": 2
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_000682.jpg",
+          "frame": 682,
+          "order": 3
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_000787.jpg",
+          "frame": 787,
+          "order": 4
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_000864.jpg",
+          "frame": 864,
+          "order": 5
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_000894.jpg",
+          "frame": 894,
+          "order": 6
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_000949.jpg",
+          "frame": 949,
+          "order": 7
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_001131.jpg",
+          "frame": 1131,
+          "order": 8
+        },
+        {
+          "src": "assets/results/cat/keyframes/frame_001196.jpg",
+          "frame": 1196,
+          "order": 9
+        }
+      ],
+      "outputs": {
+        "ours": "assets/results/cat/ours.png",
+        "sc": "assets/results/cat/sc.png"
+      },
+      "comparison": {
+        "iscp": "assets/results/cat/comparison/iscp.png",
+        "colla": "assets/results/cat/comparison/colla.png"
+      },
+      "paperLabel": "fig_comparison",
+      "keyframeLabel": "Keyframes shown in the paper"
+    },
+    {
+      "id": "imaginary",
+      "title": "Imaginary",
+      "category": "Anime",
+      "heading": "A journey across imagined spaces.",
+      "story": "Earth is seen from a small moon (01). A figure streaks through teal currents (02–04), a star-shaped box rests on a table (05), two boys run past a car (06) and ride a flying car through the clouds (07–08). A blond boy looks up, startled (09); the last frame is a dim, cluttered room (10).",
+      "look": "The source is letterboxed, and the black bars are carried into the cells of the collage.",
+      "thumb": "assets/results/imaginary/thumb.png",
+      "keyframes": [
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000000.jpg",
+          "frame": 0,
+          "order": 1
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000155.jpg",
+          "frame": 155,
+          "order": 2
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000185.jpg",
+          "frame": 185,
+          "order": 3
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000200.jpg",
+          "frame": 200,
+          "order": 4
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000260.jpg",
+          "frame": 260,
+          "order": 5
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000276.jpg",
+          "frame": 276,
+          "order": 6
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000316.jpg",
+          "frame": 316,
+          "order": 7
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000321.jpg",
+          "frame": 321,
+          "order": 8
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000426.jpg",
+          "frame": 426,
+          "order": 9
+        },
+        {
+          "src": "assets/results/imaginary/keyframes/frame_000454.jpg",
+          "frame": 454,
+          "order": 10
+        }
+      ],
+      "outputs": {
+        "ours": "assets/results/imaginary/ours.png",
+        "sc": "assets/results/imaginary/sc.png"
+      },
+      "comparison": {
+        "iscp": "assets/results/imaginary/comparison/iscp.png",
+        "colla": "assets/results/imaginary/comparison/colla.png"
       },
       "paperLabel": "fig_comparison",
       "keyframeLabel": "Keyframes shown in the paper"
@@ -443,67 +499,62 @@
       "keyframeLabel": "Keyframes shown in the paper"
     },
     {
-      "id": "cat",
-      "title": "Cat",
-      "category": "Animation",
-      "heading": "Small reactions carry the scene.",
-      "story": "An orange cat in a hat is offered a blue bottle (01–02) and a grey-haired woman leans in (03). The cat peers over a ledge (04), tumbles through the dark (05), and a small figure leaps against the sky (06). It ends beside a black cat in a yellow hood (07–09).",
-      "look": "The source is letterboxed, and the black bars are carried into several cells of the collage.",
-      "thumb": "assets/results/cat/thumb.png",
+      "id": "your-name",
+      "title": "Your Name",
+      "category": "Anime",
+      "heading": "Two lives, one composition.",
+      "story": "A girl stands apart in a crowd (01). She and a boy meet back to back (02), and a red cord loops between them (03–04), then stretches thin as they are pulled apart (05–06). A boy stands in a crowd of his own (07) and, last, on a city street (08).",
+      "look": "Four of the eight frames show the red cord (03–06). Find where they sit inside the heart.",
+      "thumb": "assets/results/your-name/thumb.png",
       "keyframes": [
         {
-          "src": "assets/results/cat/keyframes/frame_000667.jpg",
-          "frame": 667,
+          "src": "assets/results/your-name/keyframes/frame_000130.jpg",
+          "frame": 130,
           "order": 1
         },
         {
-          "src": "assets/results/cat/keyframes/frame_000677.jpg",
-          "frame": 677,
+          "src": "assets/results/your-name/keyframes/frame_000471.jpg",
+          "frame": 471,
           "order": 2
         },
         {
-          "src": "assets/results/cat/keyframes/frame_000682.jpg",
-          "frame": 682,
+          "src": "assets/results/your-name/keyframes/frame_000476.jpg",
+          "frame": 476,
           "order": 3
         },
         {
-          "src": "assets/results/cat/keyframes/frame_000787.jpg",
-          "frame": 787,
+          "src": "assets/results/your-name/keyframes/frame_000481.jpg",
+          "frame": 481,
           "order": 4
         },
         {
-          "src": "assets/results/cat/keyframes/frame_000864.jpg",
-          "frame": 864,
+          "src": "assets/results/your-name/keyframes/frame_000751.jpg",
+          "frame": 751,
           "order": 5
         },
         {
-          "src": "assets/results/cat/keyframes/frame_000894.jpg",
-          "frame": 894,
+          "src": "assets/results/your-name/keyframes/frame_000771.jpg",
+          "frame": 771,
           "order": 6
         },
         {
-          "src": "assets/results/cat/keyframes/frame_000949.jpg",
-          "frame": 949,
+          "src": "assets/results/your-name/keyframes/frame_000941.jpg",
+          "frame": 941,
           "order": 7
         },
         {
-          "src": "assets/results/cat/keyframes/frame_001131.jpg",
-          "frame": 1131,
+          "src": "assets/results/your-name/keyframes/frame_001226.jpg",
+          "frame": 1226,
           "order": 8
-        },
-        {
-          "src": "assets/results/cat/keyframes/frame_001196.jpg",
-          "frame": 1196,
-          "order": 9
         }
       ],
       "outputs": {
-        "ours": "assets/results/cat/ours.png",
-        "sc": "assets/results/cat/sc.png"
+        "ours": "assets/results/your-name/ours.png",
+        "sc": "assets/results/your-name/sc.png"
       },
       "comparison": {
-        "iscp": "assets/results/cat/comparison/iscp.png",
-        "colla": "assets/results/cat/comparison/colla.png"
+        "iscp": "assets/results/your-name/comparison/iscp.png",
+        "colla": "assets/results/your-name/comparison/colla.png"
       },
       "paperLabel": "fig_comparison",
       "keyframeLabel": "Keyframes shown in the paper"

@@ -70,7 +70,7 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
         assert.deepEqual(await evaluate(`[...document.querySelectorAll('#result-panel img')].filter(x=>!x.naturalWidth).map(x=>x.getAttribute('src'))`),[]);
       }
     }
-    console.log('PASS: all 20 example/tab combinations, every image loads');
+    console.log('PASS: all 22 example/tab combinations, every image loads');
     await load('#results/garfield/keyframes');
     assert.equal(await evaluate(`document.getElementById('tab-collage').getAttribute('aria-selected')`),'true');
     assert.equal(await evaluate(`document.querySelectorAll('.frame-item').length`),7);

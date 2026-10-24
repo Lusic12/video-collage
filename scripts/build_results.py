@@ -1,4 +1,4 @@
-"""Re-export the ten main results from the paper sources in AI4Love/, when that folder is present."""
+"""Re-export the main and supplementary qualitative results from the paper."""
 from pathlib import Path
 import json
 import re
@@ -6,7 +6,8 @@ import shutil
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-PAPER = ROOT / 'AI4Love/AI4Love'
+PAPER_CANDIDATES = (ROOT / 'AI4Love/AI4Love', ROOT.parent / 'AI4Love')
+PAPER = next((path for path in PAPER_CANDIDATES if (path / 'experiment.tex').exists()), PAPER_CANDIDATES[0])
 # title, heading, story, look. The story retells only what the selected
 # keyframes show; (NN) marks the keyframe a clause refers to.
 COPY = {
@@ -40,6 +41,9 @@ COPY = {
  'Luca': ('Luca', 'Friendship in motion.',
   'Two boys watch the lights across the water at dusk (01). By day they trade looks over a handmade board (02), cheer on a wooden deck (03), brace together on a scooter, one in a colander helmet (04–05), face a plank ramp over the sea (06) and fly off into the sky (07).',
   'Frame 01 comes from a trailer title card, so part of its caption text is visible in the top cell.'),
+ 'Chococat': ('Chococat', 'A small cast, one bright sequence.',
+  'Chococat stands between friends in a garden as they hold an orange cord (01). Against a purple backdrop, the group shifts and another character joins them (02). The scene moves outdoors again, bringing Chococat and its friends together (03). A close-up isolates Chococat’s wide eyes (04). Hello Kitty and Chococat appear side by side (05), then the orange cord stretches between the group once more (06).',
+  'The clip alternates group shots with close-ups. Follow how the orange cord connects the opening and closing moments.'),
 }
 METHODS = ['ours', 'iscp', 'colla', 'sc']
 
@@ -50,15 +54,20 @@ def preview(source, destination, size):
 
 if not PAPER.exists():
     raise SystemExit('The paper sources (AI4Love/) are not here. The page only needs assets/results and assets/results.json; edit that file directly.')
-text = (PAPER / 'experiment.tex').read_text()
-order = ['Your_name', 'Garfield', '10_Lives', 'Luca', 'Imaginary', 'House_of_Magic', 'Secret_Life_Of_Pets', 'Cat', 'Dog_tale', 'Our_Days']
+paper_figures = '\n'.join(
+    (PAPER / source).read_text()
+    for source in ('images/experiment/comparisons_main.tex', 'images/experiment/comparisons_supp.tex')
+)
+# Preserve the main-paper figure order, then append supplementary-only clips.
+order = ['10_Lives', 'Luca', 'Chococat', 'Garfield', 'House_of_Magic',
+         'Cat', 'Imaginary', 'Secret_Life_Of_Pets', 'Your_name', 'Dog_tale', 'Our_Days']
 results=[]
 for name in order:
     title, heading, story, look = COPY[name]
     slug = name.lower().replace('_', '-')
     out = ROOT / 'assets/results' / slug
     (out/'keyframes').mkdir(parents=True, exist_ok=True)
-    sources = re.findall(r'\\qualKF\{(images/method/KEYFRAME_FILTER/'+re.escape(name)+r'/[^}]+)\}', text)
+    sources = re.findall(r'\\AVKF\{(images/method/KEYFRAME_FILTER/'+re.escape(name)+r'/[^}]+)\}', paper_figures)
     if not sources: raise ValueError(f'No paper keyframes for {name}')
     frames=[]
     for i, rel in enumerate(sources):
@@ -82,4 +91,4 @@ for name in order:
 more=json.loads((ROOT/'assets/results.json').read_text()).get('more', [])
 (ROOT/'assets/results.json').write_text(json.dumps({'results':results,'more':more},ensure_ascii=False,indent=2)+'\n')
 shutil.copy2(PAPER/'images/method/framework.jpg',ROOT/'assets/results/framework.jpg')
-print(f'Exported {len(results)} results, {sum(len(x["keyframes"]) for x in results)} paper keyframes and {len(more)} extra examples.')
+print(f'Exported {len(results)} paper results, {sum(len(x["keyframes"]) for x in results)} keyframes and {len(more)} extra examples.')
