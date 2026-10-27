@@ -542,6 +542,32 @@ h2 {
 .case-tools a {
   color:var(--accent)
 }
+.result-action {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  min-height:38px;
+  padding:8px 13px;
+  border:1px solid #a8c8e4;
+  border-radius:6px;
+  background:#eef5fb;
+  color:var(--accent);
+  font-family:var(--sans);
+  font-size:13px;
+  font-weight:550;
+  line-height:1.3;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:background-color .16s,border-color .16s,color .16s
+}
+.result-action:hover {
+  border-color:var(--accent);
+  background:#dce9f4;
+  color:var(--navy)
+}
+.result-action svg { flex:none }
+.result-toolbar>.copy-link.result-action { padding:8px 13px;font-size:13px }
 .input-video-panel {
   width:min(100%,620px);
   margin-bottom:24px
@@ -1248,10 +1274,10 @@ textarea {
     font-size:12px;
     padding:8px 10px
   }
-  .result-toolbar>.copy-link {
-    padding:7px 10px;
+  .result-toolbar>.copy-link.result-action {
+    padding:8px 11px;
     margin-left:auto;
-    font-size:10px
+    font-size:11px
   }
   .tab-number {
     font-size:8px;
@@ -1279,7 +1305,8 @@ textarea {
     font-size:10px
   }
   .case-tools .original-link {
-    display:none
+    margin-left:auto;
+    font-size:11px
   }
   .story-layout {
     grid-template-columns:1fr;

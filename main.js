@@ -121,7 +121,7 @@ function render() {
     tab.tabIndex = active ? 0 : -1;
   });
   $('result-panel').setAttribute('aria-labelledby', `tab-${current.view}`);
-  $('result-panel').innerHTML = `<div class="case-header"><div class="case-title"><span class="case-index" aria-label="Example ${index + 1} of ${results.length}"><b>${pad(index + 1)}</b><i>of ${pad(results.length)}</i></span><div><h3>${escapeHtml(item.title)}</h3><p class="case-meta">${escapeHtml(item.category)} &nbsp; · &nbsp; ${item.keyframes.length} keyframes</p></div></div><div class="case-tools"><a class="original-link" href="${escapeHtml(item.outputs.ours)}" target="_blank" rel="noopener noreferrer">Open original ↗</a></div></div>
+  $('result-panel').innerHTML = `<div class="case-header"><div class="case-title"><span class="case-index" aria-label="Example ${index + 1} of ${results.length}"><b>${pad(index + 1)}</b><i>of ${pad(results.length)}</i></span><div><h3>${escapeHtml(item.title)}</h3><p class="case-meta">${escapeHtml(item.category)} &nbsp; · &nbsp; ${item.keyframes.length} keyframes</p></div></div><div class="case-tools"><a class="original-link result-action" href="${escapeHtml(item.outputs.ours)}" target="_blank" rel="noopener noreferrer">Open original <span aria-hidden="true">↗</span></a></div></div>
     ${{ collage: storyView, comparison: comparisonView }[current.view](item)}`;
   $('result-position').textContent = `${pad(index + 1)} / ${pad(results.length)} examples`;
   $('route-notice').hidden = !current.invalid;
