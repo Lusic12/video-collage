@@ -2,7 +2,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const { parseRoute, resultHash, withRefs, wordCount } = require('../main.js');
+const { parseRoute, resultHash, withRefs, wordCount, inputVideoPanel } = require('../main.js');
 const { results, more } = require('../assets/results.json');
 const root = path.resolve(__dirname, '..');
 const paper = [path.join(root, 'AI4Love/AI4Love'), path.resolve(root, '../AI4Love')]
@@ -23,8 +23,13 @@ test('each paper result offers a distinct input video', () => {
   assert.equal(ids.length, 11);
   assert.equal(new Set(ids).size, ids.length);
   assert.ok(ids.every((id) => /^[A-Za-z0-9_-]+$/.test(id)));
-  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
-  assert.ok(html.includes('id="video-dialog"') && html.includes('id="video-frame"'));
+  for (const item of results) {
+    const panel = inputVideoPanel(item);
+    assert.ok(panel.includes(`data-video-case="${item.id}"`), item.id);
+    assert.ok(panel.includes('class="video-poster"'), item.id);
+    assert.ok(panel.includes('class="input-video-frame"'), item.id);
+    assert.ok(!panel.includes('/preview'), 'Video loads only after Play');
+  }
 });
 test('unknown links fall back visibly without losing a valid example', () => {
   assert.deepEqual(parseRoute('#results/garfield/unknown', results), { id:'garfield', view:'collage', invalid:true });

@@ -8,7 +8,6 @@ const METHOD_LABELS = { ours: 'A2V-Collage (ours)', iscp: 'ISCP', colla: 'Colla'
 let current = { id: 'your-name', view: 'collage' };
 let toastTimer;
 let imageOpener;
-let videoOpener;
 const $ = (id) => document.getElementById(id);
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const pad = (n) => String(n).padStart(2, '0');
@@ -44,6 +43,17 @@ function frameGrid(item, frames) {
   </figure>`).join('')}</div>`;
 }
 
+function inputVideoPanel(item) {
+  if (!item.inputVideo) return '';
+  const url = `https://drive.google.com/file/d/${encodeURIComponent(item.inputVideo)}/view`;
+  return `<section class="input-video-panel" aria-label="${escapeHtml(item.title)} input video">
+    <div class="panel-label"><span>Input video</span><a href="${url}" target="_blank" rel="noopener noreferrer">Open on Google Drive ↗</a></div>
+    <div class="video-stage"><button class="video-poster" type="button" data-video-case="${escapeHtml(item.id)}" aria-label="Play ${escapeHtml(item.title)} input video"><img src="${escapeHtml(item.keyframes[0].src)}" alt="" loading="lazy" decoding="async"><span>▶ Play input video</span></button>
+    <iframe class="input-video-frame" title="${escapeHtml(item.title)} — input video" allow="autoplay; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe></div>
+    <button class="close-input-video" type="button" data-close-video hidden>Close video ×</button>
+  </section>`;
+}
+
 function collageFigure(item, method = 'ours') {
   const ours = method === 'ours';
   const name = ours ? 'A2V-Collage' : 'SC + Mask';
@@ -56,6 +66,7 @@ function collageFigure(item, method = 'ours') {
 
 function storyView(item) {
   return `<div class="story-layout"><div class="story-source">
+    ${inputVideoPanel(item)}
     <div class="panel-label"><span>The moments</span><span>${item.keyframes.length} keyframes, in source order</span></div>
     ${frameGrid(item, item.keyframes)}<div class="frame-endpoints"><span>Earlier</span><span>Later →</span></div>
     <div class="story-words"><div class="panel-label"><span>In words</span><span>${wordCount(item.story)} words</span></div><p>${withRefs(item.story)}</p></div>
@@ -66,7 +77,7 @@ function storyView(item) {
 function comparisonView(item) {
   const availableMethods = item.comparison ? ['ours','iscp','colla','sc'] : ['ours','sc'];
   const compareImages = availableMethods.map((method) => comparisonFigure(item, method)).join('');
-  return `<p class="comparison-note">${item.comparison ? 'Four methods, on the same keyframes and target shape.' : 'The current paper result for this example includes two methods.'}</p>
+  return `${inputVideoPanel(item)}<p class="comparison-note">${item.comparison ? 'Four methods, on the same keyframes and target shape.' : 'The current paper result for this example includes two methods.'}</p>
     <div class="comparison-grid ${item.comparison ? 'has-four' : 'has-two'}">${compareImages}</div>
     <div class="comparison-frames"><div class="panel-label"><span>Keyframes for reference</span><span>${item.keyframes.length} keyframes, in source order</span></div>${frameGrid(item, item.keyframes)}
     <button class="inline-action" type="button" data-view="collage">Read the story of this result ↗</button></div>`;
@@ -109,7 +120,7 @@ function render() {
     tab.tabIndex = active ? 0 : -1;
   });
   $('result-panel').setAttribute('aria-labelledby', `tab-${current.view}`);
-  $('result-panel').innerHTML = `<div class="case-header"><div class="case-title"><span class="case-index" aria-label="Example ${index + 1} of ${results.length}"><b>${pad(index + 1)}</b><i>of ${pad(results.length)}</i></span><div><h3>${escapeHtml(item.title)}</h3><p class="case-meta">${escapeHtml(item.category)} &nbsp; · &nbsp; ${item.keyframes.length} keyframes</p></div></div><div class="case-tools">${item.inputVideo ? `<button type="button" class="input-video-button" data-video-case="${escapeHtml(item.id)}">▶ Watch input video</button>` : ''}<a class="original-link" href="${escapeHtml(item.outputs.ours)}" target="_blank" rel="noopener noreferrer">Open original ↗</a></div></div>
+  $('result-panel').innerHTML = `<div class="case-header"><div class="case-title"><span class="case-index" aria-label="Example ${index + 1} of ${results.length}"><b>${pad(index + 1)}</b><i>of ${pad(results.length)}</i></span><div><h3>${escapeHtml(item.title)}</h3><p class="case-meta">${escapeHtml(item.category)} &nbsp; · &nbsp; ${item.keyframes.length} keyframes</p></div></div><div class="case-tools"><a class="original-link" href="${escapeHtml(item.outputs.ours)}" target="_blank" rel="noopener noreferrer">Open original ↗</a></div></div>
     ${{ collage: storyView, comparison: comparisonView }[current.view](item)}`;
   $('result-position').textContent = `${pad(index + 1)} / ${pad(results.length)} examples`;
   $('route-notice').hidden = !current.invalid;
@@ -196,14 +207,22 @@ function openImage(button) {
 function openVideo(button) {
   const item = results.find((result) => result.id === button.dataset.videoCase);
   if (!item?.inputVideo) return;
-  videoOpener = button;
-  const url = `https://drive.google.com/file/d/${encodeURIComponent(item.inputVideo)}/view`;
-  $('video-caption').textContent = `${item.title} — input video`;
-  $('original-video').href = url;
-  $('video-frame').title = `${item.title} — input video`;
-  $('video-frame').src = `https://drive.google.com/file/d/${encodeURIComponent(item.inputVideo)}/preview`;
-  $('video-dialog').showModal();
-  $('close-video').focus();
+  const panel = button.closest('.input-video-panel');
+  const frame = panel.querySelector('.input-video-frame');
+  frame.src = `https://drive.google.com/file/d/${encodeURIComponent(item.inputVideo)}/preview`;
+  frame.hidden = false;
+  button.hidden = true;
+  panel.querySelector('.close-input-video').hidden = false;
+}
+
+function closeVideo(button) {
+  const panel = button.closest('.input-video-panel');
+  const frame = panel.querySelector('.input-video-frame');
+  frame.removeAttribute('src');
+  frame.hidden = true;
+  panel.querySelector('.video-poster').hidden = false;
+  button.hidden = true;
+  panel.querySelector('.video-poster').focus();
 }
 
 function init() {
@@ -226,6 +245,8 @@ function init() {
     if (image) { openImage(image); return; }
     const video = event.target.closest('[data-video-case]');
     if (video) { openVideo(video); return; }
+    const close = event.target.closest('[data-close-video]');
+    if (close) { closeVideo(close); return; }
     const tab = event.target.closest('[data-tab], [data-view]');
     if (tab && results.length) { navigate(current.id, tab.dataset.tab || tab.dataset.view); return; }
     const example = event.target.closest('[data-case]');
@@ -257,18 +278,10 @@ function init() {
     $('dialog-image').removeAttribute('src');
     if (imageOpener?.isConnected) imageOpener.focus({ preventScroll: true });
   });
-  $('close-video').addEventListener('click', () => $('video-dialog').close());
-  $('video-dialog').addEventListener('click', (event) => {
-    if (event.target === $('video-dialog')) $('video-dialog').close();
-  });
-  $('video-dialog').addEventListener('close', () => {
-    $('video-frame').removeAttribute('src');
-    if (videoOpener?.isConnected) videoOpener.focus({ preventScroll: true });
-  });
   window.addEventListener('hashchange', onLocationChange);
   window.addEventListener('popstate', onLocationChange);
   loadResults();
 }
 
 if (typeof document !== 'undefined') document.addEventListener('DOMContentLoaded', init);
-if (typeof module !== 'undefined') module.exports = { parseRoute, resultHash, withRefs, wordCount };
+if (typeof module !== 'undefined') module.exports = { parseRoute, resultHash, withRefs, wordCount, inputVideoPanel };
