@@ -48,13 +48,13 @@ const sleep = (ms) => new Promise(r => setTimeout(r, ms));
     assert.equal(fold.frames,7);
     assert.ok(fold.bottom<=fold.h,`Key visual below the fold: ${JSON.stringify(fold)}`);
     console.log('PASS: keyframes, words and collage fit the first screen at 1440x1100');
-    assert.equal(await evaluate(`document.querySelectorAll('.more-item').length`),10);
-    assert.equal(await evaluate(`document.querySelectorAll('.more-methods img').length`),40);
-    assert.equal(await evaluate(`document.querySelectorAll('.more-item .more-frames').length`),5);
+    assert.equal(await evaluate(`document.querySelectorAll('.more-item').length`),9);
+    assert.equal(await evaluate(`document.querySelectorAll('.more-methods img').length`),36);
+    assert.equal(await evaluate(`document.querySelectorAll('.more-item .more-frames').length`),4);
     await evaluate(`document.querySelectorAll('#more img').forEach(img=>img.loading='eager')`);
     await waitFor(`[...document.querySelectorAll('#more img')].every(x=>x.complete)`);
     assert.deepEqual(await evaluate(`[...document.querySelectorAll('#more img')].filter(x=>!x.naturalWidth).map(x=>x.getAttribute('src'))`),[]);
-    console.log('PASS: 10 extra examples with four methods each, every image loads');
+    console.log('PASS: 9 extra examples with four methods each, every image loads');
     for(const item of results){
       await evaluate(`document.querySelector('[data-case=${JSON.stringify(item.id)}]').click()`);
       for(const view of ['collage','comparison']){

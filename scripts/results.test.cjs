@@ -76,7 +76,8 @@ test('all exported outputs and keyframes match paper assets byte for byte', { sk
 });
 test('extra examples carry all four methods and only files that will be published', () => {
   const ids = new Set(results.map((x) => x.id));
-  assert.equal(more.length, 10);
+  assert.equal(more.length, 9);
+  assert.ok(!more.some((item) => item.id === 'umaru'));
   for (const item of more) {
     assert.ok(!ids.has(item.id) && !ids.has(`more-${item.id}`), item.id);
     assert.deepEqual(Object.keys(item.outputs), ['ours','iscp','colla','sc'], item.id);
@@ -84,7 +85,7 @@ test('extra examples carry all four methods and only files that will be publishe
       assert.ok(file.startsWith('assets/results/') && fs.existsSync(path.join(root, file)), file);
     }
   }
-  assert.equal(more.filter((x) => x.keyframes.length).length, 5);
+  assert.equal(more.filter((x) => x.keyframes.length).length, 4);
 });
 test('the page only needs assets/results and assets/results.json', () => {
   const used = new Set(JSON.stringify({ results, more }).match(/assets\/[^"]+/g));

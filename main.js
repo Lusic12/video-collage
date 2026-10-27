@@ -153,7 +153,7 @@ function onLocationChange() {
 async function loadResults() {
   $('result-panel').setAttribute('aria-busy', 'true');
   try {
-    const response = await fetch('assets/results.json');
+    const response = await fetch('assets/results.json?v=20261028-hide-umaru');
     if (!response.ok) throw new Error(`HTTP ${response.status}`);
     const data = await response.json();
     if (!Array.isArray(data.results) || !data.results.length) throw new Error('Empty result collection');
