@@ -535,6 +535,19 @@ h2 {
 .case-tools a {
   color:var(--accent)
 }
+.input-video-button {
+  border:1px solid var(--accent);
+  border-radius:3px;
+  padding:9px 12px;
+  color:var(--accent);
+  font-size:11px;
+  font-weight:600;
+  white-space:nowrap
+}
+.input-video-button:hover,.input-video-button:focus-visible {
+  background:var(--accent);
+  color:white
+}
 .story-layout {
   display:grid;
   grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);
@@ -972,6 +985,19 @@ dialog::backdrop {
   max-height:calc(100dvh - 60px);
   overflow:hidden
 }
+#video-dialog {
+  width:min(960px,calc(100vw - 40px));
+  max-height:calc(100dvh - 40px);
+  overflow:hidden
+}
+#video-frame {
+  display:block;
+  width:100%;
+  aspect-ratio:16/9;
+  max-height:calc(100dvh - 110px);
+  border:0;
+  background:#101820
+}
 body:has(dialog[open]) {
   overflow:hidden
 }
@@ -1210,7 +1236,8 @@ textarea {
   }
   .case-header {
     margin-bottom:20px;
-    align-items:start
+    align-items:start;
+    flex-wrap:wrap
   }
   .case-title h3 {
     font-size:24px
@@ -1223,6 +1250,9 @@ textarea {
     font-size:18px
   }
   .case-tools {
+    font-size:10px
+  }
+  .input-video-button {
     font-size:10px
   }
   .case-tools .original-link {

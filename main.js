@@ -8,6 +8,7 @@ const METHOD_LABELS = { ours: 'A2V-Collage (ours)', iscp: 'ISCP', colla: 'Colla'
 let current = { id: 'your-name', view: 'collage' };
 let toastTimer;
 let imageOpener;
+let videoOpener;
 const $ = (id) => document.getElementById(id);
 const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const pad = (n) => String(n).padStart(2, '0');
@@ -108,7 +109,7 @@ function render() {
     tab.tabIndex = active ? 0 : -1;
   });
   $('result-panel').setAttribute('aria-labelledby', `tab-${current.view}`);
-  $('result-panel').innerHTML = `<div class="case-header"><div class="case-title"><span class="case-index" aria-label="Example ${index + 1} of ${results.length}"><b>${pad(index + 1)}</b><i>of ${pad(results.length)}</i></span><div><h3>${escapeHtml(item.title)}</h3><p class="case-meta">${escapeHtml(item.category)} &nbsp; · &nbsp; ${item.keyframes.length} keyframes</p></div></div><div class="case-tools"><a class="original-link" href="${escapeHtml(item.outputs.ours)}" target="_blank" rel="noopener noreferrer">Open original ↗</a></div></div>
+  $('result-panel').innerHTML = `<div class="case-header"><div class="case-title"><span class="case-index" aria-label="Example ${index + 1} of ${results.length}"><b>${pad(index + 1)}</b><i>of ${pad(results.length)}</i></span><div><h3>${escapeHtml(item.title)}</h3><p class="case-meta">${escapeHtml(item.category)} &nbsp; · &nbsp; ${item.keyframes.length} keyframes</p></div></div><div class="case-tools">${item.inputVideo ? `<button type="button" class="input-video-button" data-video-case="${escapeHtml(item.id)}">▶ Watch input video</button>` : ''}<a class="original-link" href="${escapeHtml(item.outputs.ours)}" target="_blank" rel="noopener noreferrer">Open original ↗</a></div></div>
     ${{ collage: storyView, comparison: comparisonView }[current.view](item)}`;
   $('result-position').textContent = `${pad(index + 1)} / ${pad(results.length)} examples`;
   $('route-notice').hidden = !current.invalid;
@@ -192,6 +193,19 @@ function openImage(button) {
   $('close-dialog').focus();
 }
 
+function openVideo(button) {
+  const item = results.find((result) => result.id === button.dataset.videoCase);
+  if (!item?.inputVideo) return;
+  videoOpener = button;
+  const url = `https://drive.google.com/file/d/${encodeURIComponent(item.inputVideo)}/view`;
+  $('video-caption').textContent = `${item.title} — input video`;
+  $('original-video').href = url;
+  $('video-frame').title = `${item.title} — input video`;
+  $('video-frame').src = `https://drive.google.com/file/d/${encodeURIComponent(item.inputVideo)}/preview`;
+  $('video-dialog').showModal();
+  $('close-video').focus();
+}
+
 function init() {
   document.querySelector('.tabs').addEventListener('keydown', (event) => {
     const tabs = [...document.querySelectorAll('[data-tab]')];
@@ -210,6 +224,8 @@ function init() {
   document.addEventListener('click', (event) => {
     const image = event.target.closest('[data-zoom]');
     if (image) { openImage(image); return; }
+    const video = event.target.closest('[data-video-case]');
+    if (video) { openVideo(video); return; }
     const tab = event.target.closest('[data-tab], [data-view]');
     if (tab && results.length) { navigate(current.id, tab.dataset.tab || tab.dataset.view); return; }
     const example = event.target.closest('[data-case]');
@@ -240,6 +256,14 @@ function init() {
   $('image-dialog').addEventListener('close', () => {
     $('dialog-image').removeAttribute('src');
     if (imageOpener?.isConnected) imageOpener.focus({ preventScroll: true });
+  });
+  $('close-video').addEventListener('click', () => $('video-dialog').close());
+  $('video-dialog').addEventListener('click', (event) => {
+    if (event.target === $('video-dialog')) $('video-dialog').close();
+  });
+  $('video-dialog').addEventListener('close', () => {
+    $('video-frame').removeAttribute('src');
+    if (videoOpener?.isConnected) videoOpener.focus({ preventScroll: true });
   });
   window.addEventListener('hashchange', onLocationChange);
   window.addEventListener('popstate', onLocationChange);

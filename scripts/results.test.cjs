@@ -18,6 +18,14 @@ test('keyframe links already printed in the paper open the story view', () => {
     assert.deepEqual(parseRoute(`#results/${item.id}/keyframes`, results), { id:item.id, view:'collage', invalid:false });
   }
 });
+test('each paper result offers a distinct input video', () => {
+  const ids = results.map((item) => item.inputVideo);
+  assert.equal(ids.length, 11);
+  assert.equal(new Set(ids).size, ids.length);
+  assert.ok(ids.every((id) => /^[A-Za-z0-9_-]+$/.test(id)));
+  const html = fs.readFileSync(path.join(root, 'index.html'), 'utf8');
+  assert.ok(html.includes('id="video-dialog"') && html.includes('id="video-frame"'));
+});
 test('unknown links fall back visibly without losing a valid example', () => {
   assert.deepEqual(parseRoute('#results/garfield/unknown', results), { id:'garfield', view:'collage', invalid:true });
   assert.deepEqual(parseRoute('#results/unknown/comparison', results), { id:'10-lives', view:'comparison', invalid:true });

@@ -46,6 +46,20 @@ COPY = {
   'The clip alternates group shots with close-ups. Follow how the orange cord connects the opening and closing moments.'),
 }
 METHODS = ['ours', 'iscp', 'colla', 'sc']
+# Google Drive file IDs for the original input clips in the shared video folder.
+INPUT_VIDEOS = {
+ '10_Lives': '11gg5AQOZQTZnuXId1l5R5iDPNPKWQZiN',
+ 'Luca': '1IMJSNjsZKQD5x_Olqydv722v9glIBsQJ',
+ 'Chococat': '1iVAkjwIYDL1owhcARiOYkSg7-s5lm6xq',
+ 'Garfield': '1Mu3JFQIbuZy_Ytu6vBOeSOxNSikjvN4Q',
+ 'House_of_Magic': '13Fsgn7P0Tz8QhgIYNdMqhUVzQ8ETZtTU',
+ 'Cat': '1PzToxGonGz6TNKxH4RxUMddlwXRbSDKX',
+ 'Imaginary': '1oaZNaLlfKnNCODi4RDopsPI-UN2d-DG6',
+ 'Secret_Life_Of_Pets': '1EI3nOt1F3p9fKzYSP7japF_OzHG_SZ4A',
+ 'Your_name': '18H63-j0gQA6W3heSvgeL0WKnM7x7NCxI',
+ 'Dog_tale': '11gE8S79VmKFEl9dKv4kzVkO3WEh9UkCi',
+ 'Our_Days': '10bqyFjBBEZErBDzXZVJFu7cAqJX6xFDI',
+}
 
 def preview(source, destination, size):
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -85,7 +99,7 @@ for name in order:
         outputs[method]=str(destination.relative_to(ROOT))
     comparison={method:outputs.pop(method) for method in ['iscp','colla']}
     thumb=preview(out/'ours.png', out/'thumb.png', 240)
-    results.append({'id':slug,'title':title,'category':'Live action' if name in ['Dog_tale','Our_Days'] else ('Anime' if name in ['Your_name','Imaginary'] else 'Animation'),'heading':heading,'story':story,'look':look,'thumb':thumb,'keyframes':frames,'outputs':outputs,'comparison':comparison,'paperLabel':'fig_comparison','keyframeLabel':'Keyframes shown in the paper'})
+    results.append({'id':slug,'title':title,'category':'Live action' if name in ['Dog_tale','Our_Days'] else ('Anime' if name in ['Your_name','Imaginary'] else 'Animation'),'heading':heading,'story':story,'look':look,'thumb':thumb,'keyframes':frames,'outputs':outputs,'comparison':comparison,'inputVideo':INPUT_VIDEOS[name],'paperLabel':'fig_comparison','keyframeLabel':'Keyframes shown in the paper'})
 # The extra examples no longer have a separate source: their files live in
 # assets/results/more and their entries are kept as they are.
 more=json.loads((ROOT/'assets/results.json').read_text()).get('more', [])

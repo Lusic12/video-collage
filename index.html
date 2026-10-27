@@ -115,6 +115,10 @@
     <div class="dialog-toolbar"><p id="image-caption"></p><div><button type="button" id="zoom-size">Actual size</button><a id="original-image" target="_blank" rel="noopener noreferrer">Open original ↗</a><button type="button" id="close-dialog" aria-label="Close image viewer">Close ×</button></div></div>
     <div id="image-viewport" class="image-viewport"><img id="dialog-image" alt=""></div>
   </dialog>
+  <dialog id="video-dialog" aria-labelledby="video-caption">
+    <div class="dialog-toolbar"><p id="video-caption"></p><div><a id="original-video" target="_blank" rel="noopener noreferrer">Open on Google Drive ↗</a><button type="button" id="close-video" aria-label="Close input video">Close ×</button></div></div>
+    <iframe id="video-frame" allow="autoplay; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" title="Input video"></iframe>
+  </dialog>
   <dialog id="copy-dialog" aria-labelledby="copy-title"><form method="dialog"><h2 id="copy-title">Copy link</h2><p>Select and copy the text below.</p><textarea id="copy-text" readonly rows="4" aria-label="Text to copy"></textarea><button class="button" type="submit">Done</button></form></dialog>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
