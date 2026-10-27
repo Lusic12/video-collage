@@ -1,6 +1,7 @@
 'use strict';
 
 const VIEW_NAMES = { collage: 'Story', comparison: 'Compare methods' };
+const PAPER_TITLE = 'A2V-Collage: Chronology-Preserving Anime Video-to-Collage Generation';
 // Links already printed in the paper use this view name.
 const VIEW_ALIASES = { keyframes: 'collage' };
 let results = [];
@@ -125,7 +126,7 @@ function render() {
   $('result-position').textContent = `${pad(index + 1)} / ${pad(results.length)} examples`;
   $('route-notice').hidden = !current.invalid;
   $('route-notice').textContent = current.invalid ? 'This result link could not be matched exactly. Choose an example or a view below.' : '';
-  document.title = `${item.title} · ${VIEW_NAMES[current.view]} · A2V-Collage`;
+  document.title = `${item.title} · ${VIEW_NAMES[current.view]} | ${PAPER_TITLE}`;
 }
 
 function navigate(id, view, scroll = false) {
