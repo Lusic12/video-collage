@@ -557,6 +557,28 @@ h2 {
   color:var(--accent);
   font-size:14px
 }
+/* Keep the result labels and caption readable at every viewport size. */
+.input-video-panel .panel-label,
+.input-video-panel .panel-label a {
+  font-size:18px;
+  letter-spacing:0;
+  text-transform:none
+}
+.story-layout>.collage-figure .panel-label {
+  font-size:20px;
+  font-weight:600;
+  letter-spacing:0;
+  text-transform:none
+}
+.story-layout>.collage-figure .panel-label span+span {
+  font-size:18px;
+  font-weight:400
+}
+.story-layout>.collage-figure>figcaption {
+  font-size:18px;
+  line-height:1.6;
+  margin-top:12px
+}
 .video-stage {
   aspect-ratio:16/9;
   background:#101820;
