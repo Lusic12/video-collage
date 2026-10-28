@@ -223,9 +223,6 @@ button img {
   font-variant-numeric:tabular-nums;
   pointer-events:none
 }
-.key-source .frame-endpoints {
-  margin-top:9px
-}
 .intro-words {
   margin-top:20px;
   padding:20px 24px 22px;
@@ -622,16 +619,20 @@ h2 {
   gap:36px
 }
 .story-layout>.collage-figure {
-  align-self:start;
-  position:sticky;
-  top:92px
+  align-self:start
+}
+.story-summary {
+  grid-column:1 / -1;
+  min-width:0
 }
 .story-words {
-  margin-top:22px;
+  margin-top:0;
   padding-top:18px;
   border-top:1px solid var(--line)
 }
 .story-words p {
+  text-align:justify;
+  hyphens:auto;
   color:#3f4d57;
   font:400 18px/1.75 var(--sans)
 }
@@ -720,24 +721,6 @@ h2 {
 .frame-item figcaption b {
   color:var(--ink);
   font-weight:500
-}
-.frame-endpoints {
-  display:flex;
-  align-items:center;
-  gap:9px;
-  font-size:13px;
-  color:#758490;
-  margin-top:14px
-}
-.frame-endpoints::before {
-  content:'';
-  height:1px;
-  background:var(--line);
-  flex:1;
-  order:1
-}
-.frame-endpoints span:last-child {
-  order:2
 }
 .inline-action {
   display:inline-block;

@@ -69,10 +69,12 @@ function storyView(item) {
   return `<div class="story-layout"><div class="story-source">
     ${inputVideoPanel(item)}
     <div class="panel-label"><span>The moments</span><span>${item.keyframes.length} keyframes, in source order</span></div>
-    ${frameGrid(item, item.keyframes)}<div class="frame-endpoints"><span>Earlier</span><span>Later →</span></div>
+    ${frameGrid(item, item.keyframes)}
+  </div>${collageFigure(item)}
+  <div class="story-summary">
     <div class="story-words"><div class="panel-label"><span>In words</span><span>${wordCount(item.story)} words</span></div><p>${withRefs(item.story)}</p></div>
     <p class="story-look"><b>Look for</b>${withRefs(item.look)}</p>
-  </div>${collageFigure(item)}</div>`;
+  </div></div>`;
 }
 
 function comparisonView(item) {
