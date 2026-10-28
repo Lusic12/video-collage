@@ -46,9 +46,8 @@ function frameGrid(item, frames) {
 
 function inputVideoPanel(item) {
   if (!item.inputVideo) return '';
-  const url = `https://drive.google.com/file/d/${encodeURIComponent(item.inputVideo)}/view`;
   return `<section class="input-video-panel" aria-label="${escapeHtml(item.title)} input video">
-    <div class="panel-label"><span>Input video</span><a href="${url}" target="_blank" rel="noopener noreferrer">Open on Google Drive ↗</a></div>
+    <div class="panel-label"><span>Input video</span></div>
     <div class="video-stage"><button class="video-poster" type="button" data-video-case="${escapeHtml(item.id)}" aria-label="Play ${escapeHtml(item.title)} input video"><img src="${escapeHtml(item.keyframes[0].src)}" alt="" loading="lazy" decoding="async"><span>▶ Play input video</span></button>
     <iframe class="input-video-frame" title="${escapeHtml(item.title)} — input video" allow="autoplay; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin" hidden></iframe></div>
     <button class="close-input-video" type="button" data-close-video hidden>Close video ×</button>
@@ -59,9 +58,8 @@ function collageFigure(item, method = 'ours') {
   const ours = method === 'ours';
   const name = ours ? 'A2V-Collage' : 'SC + Mask';
   return `<figure class="collage-figure">
-    <div class="panel-label"><span class="${current.view === 'comparison' ? 'method-name' : ''}">${ours ? (current.view === 'comparison' ? 'A2V-Collage · Ours' : 'The story collage') : name}</span><span>${ours ? 'Final output' : 'Baseline output'}</span></div>
+    <div class="panel-label"><span class="${current.view === 'comparison' ? 'method-name' : ''}">${ours ? (current.view === 'comparison' ? 'A2V-Collage · Ours' : 'Collage') : name}</span></div>
     <div class="collage-stage">${imageButton(item.outputs[method], `${item.title} — ${name} output`, 'decoding="async" fetchpriority="high"')}<span class="expand-hint">View full size ↗</span></div>
-    <figcaption><span>${ours ? 'Selected moments, composed in one image.' : 'Same keyframes and target silhouette.'}</span><a href="${escapeHtml(item.outputs[method])}" target="_blank" rel="noopener noreferrer">Original ↗</a></figcaption>
   </figure>`;
 }
 
@@ -88,7 +86,7 @@ function comparisonFigure(item, method) {
   const labels = METHOD_LABELS;
   const src = method === 'ours' || method === 'sc' ? item.outputs[method] : item.comparison[method];
   return `<figure class="collage-figure comparison-method">
-    <div class="panel-label"><span class="method-name">${labels[method]}</span><span>Full output</span></div>
+    <div class="panel-label"><span class="method-name">${labels[method]}</span></div>
     <div class="collage-stage">${imageButton(src, `${item.title} — ${labels[method]}`, 'loading="lazy" decoding="async"')}<span class="expand-hint">View full size ↗</span></div>
     <figcaption><span>${labels[method]}</span><a href="${escapeHtml(src)}" target="_blank" rel="noopener noreferrer">Original ↗</a></figcaption>
   </figure>`;
@@ -264,7 +262,6 @@ function init() {
     url.hash = resultHash(current.id, current.view);
     copyText(url.href, 'Result link');
   });
-  $('copy-citation').addEventListener('click', () => copyText($('bibtex').textContent, 'Citation'));
   $('close-dialog').addEventListener('click', () => $('image-dialog').close());
   $('zoom-size').addEventListener('click', () => {
     const actual = $('image-viewport').classList.toggle('actual-size');
