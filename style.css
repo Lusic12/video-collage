@@ -351,6 +351,12 @@ h2 {
 .section-heading h2 {
   margin-top:8px
 }
+.results-guide {
+  margin-top:10px;
+  font-size:18px;
+  line-height:1.6;
+  color:var(--muted)
+}
 .example-strip {
   display:flex;
   gap:8px;
