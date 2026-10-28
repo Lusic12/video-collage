@@ -821,6 +821,24 @@ h2 {
   letter-spacing:0;
   text-transform:none
 }
+/* One method heading and one separate original-image action per comparison. */
+.comparison-method .panel-label {
+  min-height:2.8em;
+  justify-content:center;
+  margin-bottom:10px;
+  font-size:18px;
+  text-align:center
+}
+.comparison-method .method-name {
+  font-size:18px;
+  font-weight:700
+}
+.comparison-method>.comparison-actions {
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  margin-top:12px
+}
 .comparison-note {
   margin-bottom:18px;
   color:var(--muted);

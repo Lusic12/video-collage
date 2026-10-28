@@ -92,7 +92,7 @@ function comparisonFigure(item, method) {
   return `<figure class="collage-figure comparison-method">
     <div class="panel-label"><span class="method-name">${labels[method]}</span></div>
     <div class="collage-stage">${imageButton(src, `${item.title} — ${labels[method]}`, 'loading="lazy" decoding="async"')}<span class="expand-hint">View full size ↗</span></div>
-    <figcaption><span>${labels[method]}</span><a href="${escapeHtml(src)}" target="_blank" rel="noopener noreferrer">Original ↗</a></figcaption>
+    <figcaption class="comparison-actions"><a class="result-action" href="${escapeHtml(src)}" target="_blank" rel="noopener noreferrer" aria-label="Open original ${escapeHtml(item.title)} — ${labels[method]}">Original ↗</a></figcaption>
   </figure>`;
 }
 
@@ -100,9 +100,10 @@ function moreExample(item) {
   const frames = item.keyframes.length ? `<div class="more-frames"><div class="panel-label"><span>Selected keyframes</span><span>${item.keyframes.length} keyframes, in source order</span></div>
     <ol>${item.keyframes.map((frame) => `<li><button class="image-button" type="button" data-zoom="${escapeHtml(frame.src)}" data-caption="${escapeHtml(item.title)} — keyframe ${frame.order}" aria-label="Enlarge keyframe ${frame.order}"><img src="${escapeHtml(frame.thumb)}" alt="" loading="lazy" decoding="async"></button><span>${pad(frame.order)}</span></li>`).join('')}</ol></div>` : '';
   return `<article class="more-item" id="more-${escapeHtml(item.id)}"><h3>${escapeHtml(item.title)}</h3>${frames}
-    <div class="more-methods">${Object.keys(METHOD_LABELS).map((method) => `<figure>
+    <div class="more-methods">${Object.keys(METHOD_LABELS).map((method) => `<figure class="comparison-method">
+      <div class="panel-label"><span class="method-name">${METHOD_LABELS[method]}</span></div>
       <button class="image-button" type="button" data-zoom="${escapeHtml(item.outputs[method].src)}" data-caption="${escapeHtml(item.title)} — ${METHOD_LABELS[method]}" aria-label="Enlarge ${escapeHtml(item.title)}, ${METHOD_LABELS[method]}"><img src="${escapeHtml(item.outputs[method].view)}" alt="${escapeHtml(item.title)} — ${METHOD_LABELS[method]} output" loading="lazy" decoding="async"></button>
-      <figcaption class="${method === 'ours' ? 'method-name' : ''}">${METHOD_LABELS[method]}</figcaption></figure>`).join('')}</div></article>`;
+      <figcaption class="comparison-actions"><a class="result-action" href="${escapeHtml(item.outputs[method].src)}" target="_blank" rel="noopener noreferrer" aria-label="Open original ${escapeHtml(item.title)} — ${METHOD_LABELS[method]}">Original ↗</a></figcaption></figure>`).join('')}</div></article>`;
 }
 
 function render() {
